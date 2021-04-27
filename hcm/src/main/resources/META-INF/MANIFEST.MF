@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: Lenovo
+Build-Jdk: 1.8.0_281
+Package: edu.bit.hcm
+Main-Class: edu.bit.hcm.core.Main
+mode: development
+url: 
+Class-Path: modules/hcm-framework-0.0.1.jar modules/hcm-doctor-registration-
+ 0.0.1.jar modules/hcm-patient-0.0.1.jar modules/hcm-laboratory-testing-0.0.
+ 1.jar modules/hcm-prescription-0.0.1.jar modules/hcm-user-registration-0.0.
+ 1.jar libs/spring-web-3.0.2.RELEASE.jar libs/aopalliance-1.0.jar libs
+ /spring-beans-3.0.2.RELEASE.jar libs/spring-context-3.0.2.RELEASE.jar
+  libs/spring-aop-3.0.2.RELEASE.jar libs/spring-expression-3.0.2.RELEA
+ SE.jar libs/spring-asm-3.0.2.RELEASE.jar libs/spring-core-3.0.2.RELEA
+ SE.jar libs/commons-logging-1.1.1.jar libs/hcm-entity-dto-service-0.0
+ .1-SNAPSHOT.jar libs/jackson-core-2.5.1.jar libs/jackson-databind-2.5
+ .1.jar libs/jackson-annotations-2.5.0.jar libs/jackson-module-jaxb-an
+ notations-2.5.1.jar libs/jackson-mapper-asl-1.9.13.jar libs/jackson-c
+ ore-asl-1.9.13.jar libs/slf4j-api-1.7.30.jar libs/slf4j-simple-1.7.30
+ .jar
+

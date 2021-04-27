@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.viewprescription.ViewPrescriptionController">
+   <children>
+      <Text fill="DARKCYAN" layoutX="44.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pharmacy">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Pane layoutX="42.0" layoutY="82.0" prefHeight="480.0" prefWidth="865.0" style="-fx-border-color: #008B8B;">
+         <children>
+            <Text fill="DARKCYAN" layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending Prescriptions">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <TableView id="tblPharmacy" fx:id="tblPendingPrescription" layoutX="11.0" layoutY="67.0" prefHeight="406.0" prefWidth="842.0">
+              <columns>
+                <TableColumn id="clmPharmacyPID" fx:id="clmPID" prefWidth="74.0" text="Patient ID" />
+                <TableColumn id="clmPharmacyPatientName" fx:id="clmPatientName" prefWidth="149.0" text="Patient Name" />
+                  <TableColumn id="clmPharmacyPrescription" fx:id="clmPrescriptionID" prefWidth="178.0" text="Prescription ID" />
+                  <TableColumn fx:id="cmlStatus" prefWidth="75.0" text="Status" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

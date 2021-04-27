@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane fx:id="dashboardLeftPane" maxHeight="1.7976931348623157E308" maxWidth="250.0" minHeight="-Infinity" minWidth="250.0" prefHeight="467.0" prefWidth="250.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #07a7e6,#03445e);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.dashboard.DashboardLeftPaneController">
+	<children>
+		<Label layoutY="-2.0" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="250.0" style="-fx-background-color: #03445e;" text="Favorites" textFill="WHITE">
+			<font>
+				<Font size="16.0" />
+			</font>
+			<padding>
+				<Insets left="10.0" />
+			</padding>
+		</Label>
+	</children>
+</Pane>

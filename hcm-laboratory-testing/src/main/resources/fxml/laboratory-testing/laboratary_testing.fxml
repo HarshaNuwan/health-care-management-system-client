@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="DARKCYAN" layoutX="55.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laboratary Testing">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Pane layoutX="51.0" layoutY="72.0" prefHeight="285.0" prefWidth="503.0" style="-fx-border-color: #008B8B;">
+         <children>
+            <Label id="lblLabPID" layoutX="31.0" layoutY="40.0" text="PID">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField id="txtLabPID" layoutX="64.0" layoutY="36.0" prefHeight="25.0" prefWidth="96.0" promptText="Enter PID" />
+            <Button id="btnLabSearch" layoutX="191.0" layoutY="36.0" mnemonicParsing="false" style="-fx-background-color: #008080;" text="Search" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="86.0" text="Laboratary Testing(s)" textFill="DARKCYAN">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TableView id="tblViewLabTest" layoutX="31.0" layoutY="121.0" prefHeight="114.0" prefWidth="424.0">
+              <columns>
+                <TableColumn id="clmLabTestDate" prefWidth="75.0" text="Date" />
+                <TableColumn id="clmLabTestRequestID" prefWidth="75.0" text="Request_ID" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane layoutX="53.0" layoutY="372.0" prefHeight="167.0" prefWidth="503.0" style="-fx-border-color: #008B8B;">
+         <children>
+            <Label layoutX="35.0" layoutY="21.0" text="Report Upload" textFill="DARKCYAN">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="txtLabUploadRequestID" layoutX="35.0" layoutY="53.0" prefHeight="25.0" prefWidth="114.0" promptText="Enter Request ID" />
+            <Button id="btnLabUpload" layoutX="189.0" layoutY="53.0" mnemonicParsing="false" style="-fx-background-color: #008080;" text="Upload" textFill="WHITE" />
+            <ProgressIndicator id="indLabUpload" layoutX="276.0" layoutY="46.0" progress="0.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

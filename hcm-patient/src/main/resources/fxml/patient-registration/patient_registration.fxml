@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.patientregistration.PatientRegistrationController">
+   <children>
+      <Pane layoutX="34.0" layoutY="68.0" prefHeight="279.0" prefWidth="533.0" style="-fx-border-color: #008B8B;">
+         <children>
+            <Label id="lblNIC" layoutX="15.0" layoutY="12.0" prefHeight="36.0" prefWidth="75.0" text="NIC/PP/DL Number*" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField id="txtNIC" layoutX="108.0" layoutY="17.0" promptText="Enter valid ID number" />
+            <Button id="btnSearchReg" layoutX="273.0" layoutY="16.0" mnemonicParsing="false" style="-fx-background-color: #008080;" text="Search" textFill="WHITE" />
+            <Label id="lblPID" layoutX="383.0" layoutY="22.0" text="PID" textFill="DIMGRAY">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <TextField id="txtPID" layoutX="414.0" layoutY="17.0" prefHeight="25.0" prefWidth="98.0" />
+            <Label id="lblTitle" layoutX="15.0" layoutY="58.0" text="Title" />
+            <ComboBox id="cmbTitle" layoutX="108.0" layoutY="54.0" prefHeight="25.0" prefWidth="75.0" promptText="Select" />
+            <Label id="lblFname" layoutX="15.0" layoutY="96.0" text="First Name" />
+            <TextField id="txtFname" layoutX="108.0" layoutY="91.0" promptText="Enter first name" />
+            <Label id="lblLname" layoutX="299.0" layoutY="96.0" text="Last Name" />
+            <TextField id="txtLname" layoutX="362.0" layoutY="92.0" promptText="Enter last name " />
+            <Label id="lblAddress" layoutX="15.0" layoutY="130.0" text="Address" />
+            <TextField id="txtAddress1" layoutX="107.0" layoutY="128.0" prefHeight="25.0" prefWidth="241.0" promptText="Enter address line 1" />
+            <TextField id="txtAddress2" layoutX="107.0" layoutY="164.0" prefHeight="25.0" prefWidth="241.0" promptText="Enter address line 2" />
+            <TextField id="txtAddress3" layoutX="107.0" layoutY="199.0" prefHeight="25.0" prefWidth="241.0" promptText="Enter address line 3" />
+            <Label id="lblContact" layoutX="14.0" layoutY="235.0" text="Contact number" />
+            <TextField id="txtContact" layoutX="107.0" layoutY="233.0" promptText="eg - 0777123456" />
+            <Label id="lblEmail" layoutX="299.0" layoutY="235.0" text="Email" />
+            <TextField id="txtEmail" layoutX="362.0" layoutY="231.0" promptText="eg - example@test.com" />
+         </children>
+      </Pane>
+      <Pane layoutX="34.0" layoutY="353.0" prefHeight="172.0" prefWidth="533.0" style="-fx-border-color: #008B8B;">
+         <children>
+            <Label id="lblDBO" layoutX="15.0" layoutY="25.0" text="DOB" />
+            <DatePicker id="dtpDOB" layoutX="102.0" layoutY="21.0" promptText="Select date" />
+            <Label id="lblSex" layoutX="16.0" layoutY="59.0" text="Sex" />
+            <RadioButton id="rdbMale" layoutX="102.0" layoutY="59.0" mnemonicParsing="false" text="Male" />
+            <RadioButton id="rdbFemale" layoutX="172.0" layoutY="59.0" mnemonicParsing="false" text="Female" />
+            <RadioButton id="rdbOther" layoutX="249.0" layoutY="59.0" mnemonicParsing="false" text="Other" />
+            <Label id="lblBlood" layoutX="15.0" layoutY="94.0" text="Blood Group" />
+            <ComboBox id="cmbBlood" layoutX="101.0" layoutY="90.0" prefWidth="150.0" promptText="Select" />
+            <Label id="lblWeight" layoutX="16.0" layoutY="131.0" text="Weight" />
+            <TextField id="txtWeight" layoutX="102.0" layoutY="127.0" promptText="eg - 57 kg" />
+            <Label id="lblHight" layoutX="304.0" layoutY="131.0" text="Height" />
+            <TextField id="txtHight" layoutX="364.0" layoutY="127.0" promptText="eg - 1.68 m" />
+         </children>
+      </Pane>
+      <Button id="btnSaveReg" layoutX="386.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" />
+      <Button id="btnCancelReg" layoutX="480.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #A9A9A9;" text="Cancel" textFill="WHITE" />
+      <Text fill="DARKCYAN" layoutX="34.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Registration">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

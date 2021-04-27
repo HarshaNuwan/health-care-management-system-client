@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.user.registration.UserManagementController">
+   <children>
+      <Text fill="DARKCYAN" layoutX="31.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Management" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="31.0" layoutY="82.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <AnchorPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label id="lblNewUser" layoutX="100.0" layoutY="9.0" prefHeight="17.0" prefWidth="69.0" text="Search User" textFill="DARKCYAN" AnchorPane.leftAnchor="100.0" />
+                  <Text fill="DARKCYAN" layoutX="5.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Accounts" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="9.05078125">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField id="txtUserMngSearchUser" layoutX="169.0" layoutY="5.0" prefHeight="25.0" prefWidth="283.0" promptText="Enter user name" />
+                  <TableView fx:id="userTable" layoutX="9.0" layoutY="59.94921875" onMouseClicked="#onUserAccountTableClicked" prefHeight="404.0" prefWidth="653.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                     <columns>
+                        <TableColumn fx:id="clmUserMngUserID" prefWidth="75.0" text="User ID" />
+                        <TableColumn fx:id="clmUserMngUsername" prefWidth="75.0" text="User Name" />
+                        <TableColumn fx:id="clmUserMngRole" prefWidth="75.0" text="User Role" />
+                        <TableColumn fx:id="clmUserMngStatus" prefWidth="75.0" text="Status" />
+                        <TableColumn fx:id="clmCreatedDate" prefWidth="75.0" text="Created/Updated Date" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets right="366.0" />
+               </padding>
+            </AnchorPane>
+            <Pane layoutX="689.0" prefHeight="421.0" prefWidth="353.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;" AnchorPane.bottomAnchor="65.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <Label layoutX="12.0" layoutY="34.0" text="User Name" textFill="DARKCYAN" />
+                  <Label layoutX="12.0" layoutY="68.0" text="Password" textFill="DARKCYAN" />
+                  <Label layoutX="12.0" layoutY="104.0" text="User Role" textFill="DARKCYAN" />
+                  <Label layoutX="12.0" layoutY="136.0" text="Account Status" textFill="DARKCYAN" />
+                  <TextField id="txtUserMngCreatedDate" fx:id="txt_user_name" layoutX="95.0" layoutY="30.0" prefHeight="25.0" prefWidth="239.0" />
+                  <PasswordField id="txtUserMngPassword" fx:id="txt_password" layoutX="95.0" layoutY="64.0" prefHeight="25.0" prefWidth="239.0" />
+                  <ComboBox fx:id="cmb_userRole" layoutX="95.0" layoutY="99.0" prefHeight="25.0" prefWidth="239.0" />
+                  <RadioButton fx:id="accountActiveRadioButton" layoutX="123.0" layoutY="138.0" mnemonicParsing="false" text="Active" />
+                  <RadioButton fx:id="accountDisableRadioButton" layoutX="196.0" layoutY="138.0" mnemonicParsing="false" text="Dissable" />
+               </children>
+            </Pane>
+            <Pane layoutX="689.0" layoutY="428.0" prefHeight="52.0" prefWidth="353.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+               <children>
+                  <Button id="btnUserMngSave" layoutX="147.0" layoutY="14.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" />
+                  <Button id="btnUserMngDelete" layoutX="281.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />
+                  <Button id="btnUseMngClear" layoutX="214.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearUserForm" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Clear" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

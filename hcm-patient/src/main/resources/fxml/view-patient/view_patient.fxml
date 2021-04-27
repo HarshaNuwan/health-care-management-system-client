@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="DARKCYAN" layoutX="48.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Patient">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Pane layoutX="48.0" layoutY="73.0" prefHeight="481.0" prefWidth="513.0" style="-fx-border-color: #008080;">
+         <children>
+            <Label id="lblViewPatientPID" layoutX="33.0" layoutY="31.0" text="PID">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField id="txtViewPatientPID" layoutX="73.0" layoutY="27.0" prefHeight="25.0" prefWidth="87.0" promptText="Enter PID" />
+            <Button layoutX="205.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #008080;" text="Search" textFill="WHITE" />
+            <Label layoutX="33.0" layoutY="64.0" text="Prescription(s)" textFill="DARKCYAN">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TableView id="tblViewPatientPrescriptions" layoutX="34.0" layoutY="99.0" prefHeight="142.0" prefWidth="414.0">
+              <columns>
+                <TableColumn id="clmViewPatientPresDate" prefWidth="75.0" text="Date" />
+                <TableColumn id="clmViewPatientPresPID" prefWidth="104.0" text="Prescription_ID" />
+              </columns>
+            </TableView>
+            <Label layoutX="34.0" layoutY="261.0" text="Laboratory Testing(s)" textFill="DARKCYAN">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TableView id="tblViewPatientLabTests" layoutX="34.0" layoutY="298.0" prefHeight="142.0" prefWidth="414.0">
+              <columns>
+                <TableColumn id="clmViewPatientLabDate" prefWidth="75.0" text="Date" />
+                  <TableColumn id="clmViewPatientLabRequestID" prefWidth="75.0" text="Request_ID" />
+                <TableColumn id="clmViewPatientLabTestID" prefWidth="75.0" text="Test_ID" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
