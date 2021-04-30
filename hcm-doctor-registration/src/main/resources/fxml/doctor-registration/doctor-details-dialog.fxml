@@ -5,57 +5,122 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="472.0" prefWidth="736.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
-   <children>
-      <Pane prefHeight="473.0" prefWidth="781.0" style="-fx-border-color: #008B8B;">
-         <children>
-            <Pane layoutX="14.0" layoutY="14.0" prefHeight="386.0" prefWidth="754.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
-               <children>
-                  <Label layoutX="12.0" layoutY="19.0" text="NIC Number" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegNIC" layoutX="111.0" layoutY="14.0" prefHeight="25.0" prefWidth="219.0" promptText="Doctor NIC" />
-                  <Label layoutX="14.0" layoutY="48.0" text="Title" textFill="DARKCYAN" />
-                  <ComboBox id="cmbDocRegTitle" layoutX="111.0" layoutY="44.0" prefHeight="25.0" prefWidth="219.0" promptText="Select" />
-                  <Label id="lblDName" layoutX="12.0" layoutY="81.0" text="First Name" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegFName" layoutX="111.0" layoutY="74.0" prefHeight="25.0" prefWidth="219.0" promptText="Doctor first name" />
-                  <Label id="lblDocRegLName" layoutX="13.0" layoutY="108.0" text="Last Name" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegLName" layoutX="111.0" layoutY="104.0" prefHeight="25.0" prefWidth="219.0" promptText="Doctor last name" />
-                  <Label layoutX="12.0" layoutY="137.0" text="Date of Birth" textFill="DARKCYAN" />
-                  <DatePicker id="datDocRegDOB" layoutX="111.0" layoutY="133.0" prefHeight="25.0" prefWidth="219.0" />
-                  <Label layoutX="14.0" layoutY="169.0" text="Age" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegAge" layoutX="111.0" layoutY="165.0" prefHeight="25.0" prefWidth="219.0" />
-                  <Label id="lblAddress" layoutX="346.0" layoutY="18.0" text="Address Line1" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegAddress1" layoutX="465.0" layoutY="14.0" prefHeight="25.0" prefWidth="236.0" promptText="Address line1" />
-                  <Label layoutX="346.0" layoutY="48.0" text="Address Line2" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegAddress2" layoutX="465.0" layoutY="44.0" prefHeight="25.0" prefWidth="236.0" promptText="Address line2" />
-                  <Label layoutX="346.0" layoutY="81.0" text="Address Line3" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegAdd3" layoutX="465.0" layoutY="74.0" prefHeight="25.0" prefWidth="236.0" promptText="Address line3" />
-                  <Label layoutX="343.0" layoutY="137.0" text="Mobile Number" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegMobile" layoutX="467.0" layoutY="133.0" prefHeight="25.0" prefWidth="236.0" promptText="eg. 0777123456" />
-                  <Label layoutX="346.0" layoutY="111.0" text="Telephone Number" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegTel" layoutX="467.0" layoutY="103.0" prefHeight="25.0" prefWidth="236.0" promptText="eg. 0112123456" />
-                  <Label layoutX="347.0" layoutY="169.0" text="Email" textFill="DARKCYAN" />
-                  <TextField id="txtDocRegEmail" layoutX="467.0" layoutY="165.0" prefHeight="25.0" prefWidth="236.0" promptText="Doctor Email" />
-                  <Pane layoutX="14.0" layoutY="202.0" prefHeight="52.0" prefWidth="513.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
-                     <children>
-                        <Label id="lblDSpecialization" layoutX="13.0" layoutY="18.0" text="Specialization" textFill="DARKCYAN" />
-                        <ComboBox id="cmbDSpecialization" layoutX="90.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" promptText="Select" />
-                        <Label layoutX="265.0" layoutY="18.0" text="Reg. Number" textFill="DARKCYAN" />
-                        <TextField id="txtDocRegRegNo" layoutX="371.0" layoutY="15.0" prefHeight="25.0" prefWidth="130.0" />
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Pane layoutX="14.0" layoutY="407.0" prefHeight="52.0" prefWidth="754.0" style="-fx-border-color: #008B8B;">
-               <children>
-                  <Button id="btnDocRegNew" layoutX="393.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" />
-                  <Button id="btnDocRegEdit" layoutX="463.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Edit" textFill="WHITE" />
-                  <Button id="btnDocRegSave" layoutX="533.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" />
-                  <Button id="btnDocRegClear" layoutX="603.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Clear" textFill="WHITE" />
-                  <Button id="btnDocRegDelete" layoutX="674.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-   </children>
+<AnchorPane prefHeight="472.0" prefWidth="736.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="edu.bit.hcm.doctorregistration.DoctorRegistrationDialogController">
+	<children>
+		<Pane prefHeight="473.0" prefWidth="781.0"
+			style="-fx-border-color: #008B8B;">
+			<children>
+				<Pane layoutX="14.0" layoutY="14.0" prefHeight="386.0"
+					prefWidth="754.0"
+					style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
+					<children>
+						<Label layoutX="12.0" layoutY="19.0" text="NIC Number"
+							textFill="DARKCYAN" />
+						<TextField id="txtDocRegNIC" fx:id="txtNicNumber"
+							layoutX="111.0" layoutY="14.0" prefHeight="25.0"
+							prefWidth="219.0" promptText="Doctor NIC" />
+						<Label layoutX="14.0" layoutY="48.0" text="Title"
+							textFill="DARKCYAN" />
+						<ComboBox id="cmbDocRegTitle" fx:id="cmbTitle"
+							layoutX="111.0" layoutY="44.0" prefHeight="25.0"
+							prefWidth="219.0" promptText="Select" />
+						<Label id="lblDName" layoutX="12.0" layoutY="81.0"
+							text="First Name" textFill="DARKCYAN" />
+						<TextField id="txtDocRegFName" fx:id="txtFirstName"
+							layoutX="111.0" layoutY="74.0" prefHeight="25.0"
+							prefWidth="219.0" promptText="Doctor first name" />
+						<Label id="lblDocRegLName" layoutX="13.0" layoutY="108.0"
+							text="Last Name" textFill="DARKCYAN" />
+						<TextField id="txtDocRegLName" fx:id="txtLastName"
+							layoutX="111.0" layoutY="104.0" prefHeight="25.0"
+							prefWidth="219.0" promptText="Doctor last name" />
+						<Label layoutX="12.0" layoutY="137.0" text="Date of Birth"
+							textFill="DARKCYAN" />
+						<DatePicker id="datDocRegDOB" fx:id="dtmDateOfBirth"
+							layoutX="111.0" layoutY="133.0" prefHeight="25.0"
+							prefWidth="219.0" />
+						<Label layoutX="14.0" layoutY="169.0" text="Age"
+							textFill="DARKCYAN" />
+						<TextField id="txtDocRegAge" fx:id="txtAge"
+							layoutX="111.0" layoutY="165.0" prefHeight="25.0"
+							prefWidth="219.0" />
+						<Label id="lblAddress" layoutX="346.0" layoutY="18.0"
+							text="Address Line1" textFill="DARKCYAN" />
+						<TextField id="txtDocRegAddress1"
+							fx:id="txtAddressLine1" layoutX="465.0" layoutY="14.0"
+							prefHeight="25.0" prefWidth="236.0" promptText="Address line1" />
+						<Label layoutX="346.0" layoutY="48.0" text="Address Line2"
+							textFill="DARKCYAN" />
+						<TextField id="txtDocRegAddress2"
+							fx:id="txtAddressLine2" layoutX="465.0" layoutY="44.0"
+							prefHeight="25.0" prefWidth="236.0" promptText="Address line2" />
+						<Label layoutX="346.0" layoutY="81.0" text="Address Line3"
+							textFill="DARKCYAN" />
+						<TextField id="txtDocRegAdd3" fx:id="txtAddressLine3"
+							layoutX="465.0" layoutY="74.0" prefHeight="25.0"
+							prefWidth="236.0" promptText="Address line3" />
+						<Label layoutX="343.0" layoutY="137.0" text="Mobile Number"
+							textFill="DARKCYAN" />
+						<TextField id="txtDocRegMobile" fx:id="txtMobileNumber"
+							layoutX="467.0" layoutY="133.0" prefHeight="25.0"
+							prefWidth="236.0" promptText="eg. 0777123456" />
+						<Label layoutX="346.0" layoutY="111.0"
+							text="Telephone Number" textFill="DARKCYAN" />
+						<TextField id="txtDocRegTel" fx:id="txtTelephoneNumber"
+							layoutX="467.0" layoutY="103.0" prefHeight="25.0"
+							prefWidth="236.0" promptText="eg. 0112123456" />
+						<Label layoutX="347.0" layoutY="169.0" text="Email"
+							textFill="DARKCYAN" />
+						<TextField id="txtDocRegEmail" fx:id="txtEmail"
+							layoutX="467.0" layoutY="165.0" prefHeight="25.0"
+							prefWidth="236.0" promptText="Doctor Email" />
+						<Pane layoutX="14.0" layoutY="202.0" prefHeight="52.0"
+							prefWidth="513.0"
+							style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
+							<children>
+								<Label id="lblDSpecialization" layoutX="13.0"
+									layoutY="18.0" text="Specialization" textFill="DARKCYAN" />
+								<ComboBox id="cmbDSpecialization"
+									fx:id="cmbSpecialization" layoutX="90.0" layoutY="14.0"
+									prefHeight="25.0" prefWidth="130.0" promptText="Select" />
+								<Label layoutX="265.0" layoutY="18.0" text="Reg. Number"
+									textFill="DARKCYAN" />
+								<TextField id="txtDocRegRegNo"
+									fx:id="txtRegisteredNumber" layoutX="371.0" layoutY="15.0"
+									prefHeight="25.0" prefWidth="130.0" />
+							</children>
+						</Pane>
+					</children>
+				</Pane>
+				<Pane layoutX="14.0" layoutY="407.0" prefHeight="52.0"
+					prefWidth="754.0" style="-fx-border-color: #008B8B;">
+					<children>
+						<Button id="btnDocRegNew" layoutX="393.0" layoutY="14.0"
+							mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0"
+							style="-fx-background-color: #008080;" text="New"
+							textFill="WHITE" />
+						<Button id="btnDocRegEdit" layoutX="463.0" layoutY="14.0"
+							mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0"
+							style="-fx-background-color: #008080;" text="Edit"
+							textFill="WHITE" />
+						<Button id="btnDocRegSave" layoutX="533.0" layoutY="14.0"
+							mnemonicParsing="false" onAction="#saveDoctorDetails"
+							prefHeight="25.0" prefWidth="59.0"
+							style="-fx-background-color: #008080;" text="Save"
+							textFill="WHITE" />
+						<Button id="btnDocRegClear" layoutX="603.0" layoutY="14.0"
+							mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0"
+							style="-fx-background-color: #008080;" text="Clear"
+							textFill="WHITE" />
+						<Button id="btnDocRegDelete" layoutX="674.0" layoutY="13.0"
+							mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0"
+							style="-fx-background-color: #008080;" text="Delete"
+							textFill="WHITE" />
+					</children>
+				</Pane>
+			</children>
+		</Pane>
+	</children>
 </AnchorPane>

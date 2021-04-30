@@ -5,37 +5,64 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text fill="DARKCYAN" layoutX="6.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Registration">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <AnchorPane layoutX="37.0" layoutY="47.0" prefHeight="554.0" prefWidth="991.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
-         <children>
-            <Label layoutX="5.0" prefHeight="17.0" prefWidth="43.0" text="Search" textFill="DARKCYAN" />
-            <TextField id="txtDocRegSearch" layoutX="48.0" layoutY="-4.0" prefHeight="25.0" prefWidth="380.0" promptText="Enter Doctor ID" />
-            <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
-               <children>
-                  <TableView prefHeight="202.0" prefWidth="600.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="Doctor ID" />
-                      <TableColumn prefWidth="183.0" text="Doctor Name" />
-                        <TableColumn prefWidth="130.0" text="Specialization" />
-                        <TableColumn prefWidth="93.0" text="View" />
-                    </columns>
-                  </TableView>
-                  <Pane prefHeight="52.0" prefWidth="513.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <Button id="btnDocRegNew" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" />
-                        <Button id="btnDocRegEdit" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Edit" textFill="WHITE" />
-                        <Button id="btnDocRegDelete" layoutX="149.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />
-                     </children>
-                  </Pane>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+	prefWidth="977.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="edu.bit.hcm.doctorregistration.DoctorRegistrationController">
+	<children>
+		<Text fill="DARKCYAN" layoutX="6.0" layoutY="32.0"
+			strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Registration">
+			<font>
+				<Font name="System Bold" size="24.0" />
+			</font>
+		</Text>
+		<AnchorPane layoutX="37.0" layoutY="47.0"
+			prefHeight="554.0" prefWidth="991.0" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="47.0">
+			<children>
+				<Label layoutX="5.0" prefHeight="17.0" prefWidth="43.0"
+					text="Search" textFill="DARKCYAN" />
+				<TextField id="txtDocRegSearch" layoutX="48.0"
+					layoutY="-4.0" prefHeight="25.0" prefWidth="380.0"
+					promptText="Enter Doctor ID" />
+				<AnchorPane AnchorPane.bottomAnchor="0.0"
+					AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+					AnchorPane.topAnchor="30.0">
+					<children>
+						<TableView prefHeight="202.0" prefWidth="600.0"
+							AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0"
+							AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+							<columns>
+								<TableColumn prefWidth="75.0" text="Doctor ID" />
+								<TableColumn prefWidth="183.0" text="Doctor Name" />
+								<TableColumn prefWidth="130.0" text="Specialization" />
+								<TableColumn prefWidth="93.0" text="View" />
+							</columns>
+						</TableView>
+						<Pane prefHeight="52.0" prefWidth="513.0"
+							style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="5.0"
+							AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+							<children>
+								<Button id="btnDocRegNew"
+									onAction="#openDoctorRegistrationDialog" layoutX="14.0"
+									layoutY="14.0" mnemonicParsing="false" prefHeight="25.0"
+									prefWidth="59.0" style="-fx-background-color: #008080;"
+									text="New" textFill="WHITE" />
+								<Button id="btnDocRegEdit" layoutX="83.0" layoutY="14.0"
+									mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0"
+									style="-fx-background-color: #008080;" text="Edit"
+									textFill="WHITE" />
+								<Button id="btnDocRegDelete" layoutX="149.0"
+									layoutY="14.0" mnemonicParsing="false" prefHeight="25.0"
+									prefWidth="59.0" style="-fx-background-color: #008080;"
+									text="Delete" textFill="WHITE" />
+							</children>
+						</Pane>
+					</children>
+				</AnchorPane>
+			</children>
+		</AnchorPane>
+	</children>
 </AnchorPane>
