@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="332.0" prefWidth="538.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Pane layoutX="13.0" layoutY="271.0" prefHeight="52.0" prefWidth="513.0" style="-fx-border-color: #008B8B;">
+         <children>
+            <Button id="btnPatRegSave" layoutX="374.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" />
+            <Button id="btnPatRegClear" layoutX="440.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Clear" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="13.0" layoutY="196.0" prefHeight="68.0" prefWidth="513.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
+         <children>
+            <Label id="lblPatRegSex" layoutX="13.0" layoutY="10.0" text="Gender" textFill="DARKCYAN" />
+            <ComboBox id="cmbPatRegGender" layoutX="90.0" layoutY="6.0" prefHeight="25.0" prefWidth="130.0" promptText="Select" />
+            <Label id="lblPatRegSex" layoutX="13.0" layoutY="38.0" text="Blood Group" textFill="DARKCYAN" />
+            <ComboBox id="cmbPatRegBlood" layoutX="90.0" layoutY="34.0" prefHeight="25.0" prefWidth="130.0" promptText="Select" />
+            <Label layoutX="265.0" layoutY="10.0" text="Height" textFill="DARKCYAN" />
+            <TextField id="txtPatRegHeight" layoutX="371.0" layoutY="7.0" prefHeight="25.0" prefWidth="130.0" promptText="eg. 1.78 m" />
+            <Label layoutX="265.0" layoutY="38.0" text="Weight" textFill="DARKCYAN" />
+            <TextField id="txtPatRegWeight" layoutX="371.0" layoutY="34.0" prefHeight="25.0" prefWidth="130.0" promptText="eg. 60 kg" />
+         </children>
+      </Pane>
+      <Pane layoutX="13.0" layoutY="14.0" prefHeight="177.0" prefWidth="513.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
+         <children>
+            <Label layoutX="13.0" layoutY="18.0" text="NIC Number" textFill="DARKCYAN" />
+            <TextField id="txtPatRegNIC" layoutX="89.0" layoutY="14.0" prefHeight="25.0" prefWidth="130.0" promptText="Patient NIC" />
+            <Label layoutX="14.0" layoutY="44.0" text="Title" textFill="DARKCYAN" />
+            <ComboBox id="cmbPatRegTitle" layoutX="89.0" layoutY="40.0" prefHeight="25.0" prefWidth="130.0" promptText="Select" />
+            <Label id="lblDName" layoutX="13.0" layoutY="69.0" text="First Name" textFill="DARKCYAN" />
+            <TextField id="txtPatRegFName" layoutX="89.0" layoutY="65.0" prefHeight="25.0" prefWidth="130.0" promptText="Patient first name" />
+            <Label id="lblDocRegLName" layoutX="13.0" layoutY="96.0" text="Last Name" textFill="DARKCYAN" />
+            <TextField id="txtPatRegLName" layoutX="89.0" layoutY="90.0" prefHeight="25.0" prefWidth="130.0" promptText="Patient last name" />
+            <Label layoutX="13.0" layoutY="121.0" text="Date of Birth" textFill="DARKCYAN" />
+            <DatePicker id="datPatRegDOB" layoutX="89.0" layoutY="116.0" prefHeight="25.0" prefWidth="130.0" />
+            <Label layoutX="14.0" layoutY="147.0" text="Age" textFill="DARKCYAN" />
+            <TextField id="txtPatRegAge" layoutX="89.0" layoutY="142.0" prefHeight="25.0" prefWidth="130.0" />
+            <Label id="lblAddress" layoutX="266.0" layoutY="19.0" text="Address Line1" textFill="DARKCYAN" />
+            <TextField id="txtPatRegAddress1" layoutX="371.0" layoutY="15.0" prefHeight="25.0" prefWidth="130.0" promptText="Address line1" />
+            <Label layoutX="266.0" layoutY="45.0" text="Address Line2" textFill="DARKCYAN" />
+            <TextField id="txtPatRegAddress2" layoutX="371.0" layoutY="41.0" prefHeight="25.0" prefWidth="130.0" promptText="Address line2" />
+            <Label layoutX="265.0" layoutY="71.0" text="Address Line3" textFill="DARKCYAN" />
+            <TextField id="txtPatRegAdd3" layoutX="371.0" layoutY="67.0" prefHeight="25.0" prefWidth="130.0" promptText="Address line3" />
+            <Label layoutX="265.0" layoutY="97.0" text="Mobile Number" textFill="DARKCYAN" />
+            <TextField id="txtPatRegMobile" layoutX="371.0" layoutY="93.0" prefHeight="25.0" prefWidth="130.0" promptText="eg. 0777123456" />
+            <Label layoutX="264.0" layoutY="123.0" text="Telephone Number" textFill="DARKCYAN" />
+            <TextField id="txtPatRegTel" layoutX="371.0" layoutY="119.0" prefHeight="25.0" prefWidth="130.0" promptText="eg. 0112123456" />
+            <Label layoutX="264.0" layoutY="148.0" text="Email" textFill="DARKCYAN" />
+            <TextField id="txtPatReggEmail" layoutX="371.0" layoutY="145.0" prefHeight="25.0" prefWidth="130.0" promptText="PatientEmail" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
