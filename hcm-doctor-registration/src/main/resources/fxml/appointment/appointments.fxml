@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -7,19 +8,15 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.doctorregistration.DoctorAppointmentController">
    <children>
-      <Text fill="DARKCYAN" layoutX="44.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Appoinments">
+      <Text fill="DARKCYAN" layoutX="44.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor Appoinments" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Pane layoutX="42.0" layoutY="82.0" prefHeight="513.0" prefWidth="590.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="82.0">
+      <Button id="btnPatRegNew" onAction="#loadAppointments" fx:id="btnRefrsh" layoutX="845.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Refresh" textFill="WHITE" />
+      <AnchorPane style="-fx-border-color: #008b8b;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Text fill="DARKCYAN" layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appoinments">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <TableView id="tblAppoinment" fx:id="tblAppoinment" layoutX="11.0" layoutY="67.0" maxWidth="1.7976931348623157E308" prefHeight="437.0" prefWidth="890.0">
+            <TableView id="tblAppoinment" fx:id="tblAppoinment" maxWidth="1.7976931348623157E308" prefHeight="437.0" prefWidth="890.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn id="clmAppoinmentPID" fx:id="clmPID" prefWidth="35.0" text="PID" />
                 <TableColumn id="clmAppoinmentPatientName" fx:id="clmPatientName" prefWidth="104.0" text="Patient Name" />
@@ -32,6 +29,9 @@
                </columnResizePolicy>
             </TableView>
          </children>
-      </Pane>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -19,5 +19,5 @@ Class-Path: modules/hcm-framework-0.0.1.jar modules/hcm-doctor-registration-
  .1.jar libs/jackson-annotations-2.5.0.jar libs/jackson-module-jaxb-an
  notations-2.5.1.jar libs/jackson-mapper-asl-1.9.13.jar libs/jackson-c
  ore-asl-1.9.13.jar libs/slf4j-api-1.7.30.jar libs/slf4j-simple-1.7.30
- .jar
+ .jar modules/hcm-channeling-0.0.1.jar
 

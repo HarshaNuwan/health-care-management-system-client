@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.channeling.BookAppointmentController">
+   <children>
+      <Text fill="DARKCYAN" layoutX="7.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Appointment">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="42.0" layoutY="82.0" prefHeight="550.0" prefWidth="566.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Pane prefHeight="368.0" prefWidth="516.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text fill="DARKCYAN" layoutX="7.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Channeling Details">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="167.0" layoutY="33.0" text="Time" textFill="DARKCYAN" />
+                  <Pane layoutX="14.0" layoutY="67.0" prefHeight="228.0" prefWidth="591.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
+                     <children>
+                        <Label layoutX="13.0" layoutY="34.0" text="Patient ID" textFill="DARKCYAN" />
+                        <Label layoutX="14.0" layoutY="78.0" prefHeight="72.0" prefWidth="69.0" text="Reason for Consultation" textFill="DARKCYAN" wrapText="true" />
+                        <TextArea fx:id="txtReason" layoutX="124.0" layoutY="78.0" prefHeight="141.0" prefWidth="459.0" />
+                        <TextField id="txtChannelPID" fx:id="txtPatientId" layoutX="124.0" layoutY="30.0" prefHeight="25.0" prefWidth="150.0" promptText="Enter patient ID" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="14.0" layoutY="301.0" prefHeight="52.0" prefWidth="591.0" style="-fx-border-color: #008B8B;">
+                     <children>
+                        <Button id="btnChannelSave" onAction="#saveChannleBooking" fx:id="btnSave" layoutX="383.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" />
+                        <Button id="btnChannelClear" fx:id="btnClear" layoutX="451.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Clear" textFill="WHITE" />
+                        <Button id="btnChannelClear" fx:id="btnClose" layoutX="518.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Close" textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <TextField fx:id="txtTime" layoutX="202.0" layoutY="29.0" prefHeight="25.0" prefWidth="69.0" />
+                  <Label layoutX="346.0" layoutY="33.0" text="To Doctor" textFill="DARKCYAN" />
+                  <Label fx:id="lblToDoctor" layoutX="405.0" layoutY="33.0" prefHeight="17.0" prefWidth="201.0" textFill="DARKCYAN">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="33.0" text="Date" textFill="DARKCYAN" />
+                  <Label fx:id="lblDate" layoutX="68.0" layoutY="33.0" prefHeight="17.0" prefWidth="96.0" textFill="DARKCYAN">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbAmPm" layoutX="272.0" layoutY="29.0" prefHeight="25.0" prefWidth="69.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
