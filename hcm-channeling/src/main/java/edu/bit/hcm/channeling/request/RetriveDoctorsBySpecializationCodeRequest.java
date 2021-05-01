@@ -1,33 +1,41 @@
-package edu.bit.hcm.doctorregistration.request;
+package edu.bit.hcm.channeling.request;
 
 import org.springframework.http.HttpMethod;
 
 import edu.bit.hcm.framework.service.ServerRequest;
 import edu.bit.hcm.wrapper.DoctorDTOListWrapper;
 
-public class RetriveAllDoctorsRequest implements ServerRequest<DoctorDTOListWrapper>{
+public class RetriveDoctorsBySpecializationCodeRequest implements ServerRequest<DoctorDTOListWrapper>{
 	
-	private DoctorDTOListWrapper listWrapper;
-	private String URL = "http://localhost:8889/commonapi/doctor/getalldoctors";
+	private DoctorDTOListWrapper doctorDTOListWrapper;
+	private String URL = "";
 
 	@Override
 	public String convertToJSON(DoctorDTOListWrapper t) {
+		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void setURL(String uRL) {
+		URL = uRL;
 	}
 
 	@Override
 	public String getAPIURL() {
+		// TODO Auto-generated method stub
 		return this.URL;
 	}
 
 	@Override
 	public void setDTO(DoctorDTOListWrapper t) {
-		this.listWrapper = t;
+		this.doctorDTOListWrapper =t;
+		
 	}
 
 	@Override
 	public DoctorDTOListWrapper getDTO() {
-		return this.listWrapper;
+		// TODO Auto-generated method stub
+		return this.doctorDTOListWrapper;
 	}
 
 	@Override
@@ -38,6 +46,7 @@ public class RetriveAllDoctorsRequest implements ServerRequest<DoctorDTOListWrap
 
 	@Override
 	public HttpMethod getRequestMethod() {
+		// TODO Auto-generated method stub
 		return HttpMethod.GET;
 	}
 

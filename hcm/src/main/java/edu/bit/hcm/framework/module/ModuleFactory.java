@@ -1,6 +1,7 @@
 package edu.bit.hcm.framework.module;
 
 import edu.bit.hcm.authenticaion.AuthenticationModule;
+import edu.bit.hcm.channeling.ChannelingModule;
 import edu.bit.hcm.dashboard.DashboardModule;
 import edu.bit.hcm.doctorregistration.DoctorAppointmentModule;
 import edu.bit.hcm.doctorregistration.DoctorRegistrationModule;
@@ -83,6 +84,9 @@ public class ModuleFactory {
 			module = new DoctorAppointmentModule();
 			initializeModule(module, moduleType);
 			break;
+		case CHANNELING_MODULE:
+			module = new ChannelingModule();
+			initializeModule(module, moduleType);
 		default:
 			break;
 		}

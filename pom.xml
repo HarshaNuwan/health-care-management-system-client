@@ -120,5 +120,6 @@
 		<module>hcm-laboratory-testing</module>
 		<module>hcm-prescription</module>
 		<module>hcm-user-registration</module>
+		<module>hcm-channeling</module>
 	</modules>
 </project>

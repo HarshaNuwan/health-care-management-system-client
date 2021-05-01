@@ -10,7 +10,8 @@ public enum ModuleType {
 	PRESCRIPTION_MODULE("prescription", "Prescription"), 
 	VIEW_PRESCRIPTION_MODULE("view.prescription", "View Lab Tests"),
 	USER_MANAGEMENT_MODULE("user.management", "User Management"),
-	DOCTOR_APPOINTMENT_MODULE("doctor.appointment", "Appointment");
+	DOCTOR_APPOINTMENT_MODULE("doctor.appointment", "Appointment"),
+	CHANNELING_MODULE("patient.channeling", "Channeling");;
 	
 	
 	private String moduleName, moduleTitle;

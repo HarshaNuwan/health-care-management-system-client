@@ -4,6 +4,7 @@ public class LoggedUser {
 
 	private static LoggedUser instance;
 	private String userName, jwtToken;
+	private int doctorId;
 	
 	
 	private LoggedUser() {
@@ -41,5 +42,13 @@ public class LoggedUser {
 		this.jwtToken = null;
 		this.userName = null;
 		
+	}
+	
+	public int getDoctorId() {
+		return doctorId;
+	}
+	
+	public void setDoctorId(int doctorId) {
+		this.doctorId = doctorId;
 	}
 }
