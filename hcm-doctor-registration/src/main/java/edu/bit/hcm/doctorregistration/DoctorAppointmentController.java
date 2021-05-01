@@ -2,8 +2,15 @@ package edu.bit.hcm.doctorregistration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+
+import edu.bit.hcm.ChannelingDTO;
+import edu.bit.hcm.PatientDTO;
 import edu.bit.hcm.framework.service.Controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -13,11 +20,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class DoctorAppointmentController implements Controller, Initializable {
 
@@ -42,8 +52,11 @@ public class DoctorAppointmentController implements Controller, Initializable {
 	private TableColumn<Appointment, String> clmReason;
 
 	final ObservableList<Appointment> tableData = FXCollections.observableArrayList();
-	
-	
+
+	// ====================================
+
+	@FXML
+	private Button btnRefresh;
 
 	public DoctorAppointmentController() {
 		loader = new FXMLLoader();
@@ -53,6 +66,9 @@ public class DoctorAppointmentController implements Controller, Initializable {
 
 	private class Appointment {
 		private StringProperty clmPID, clmPatientName, clmAge, clmGender, clmReason;
+		private PatientDTO patientDTO;
+		private int doctorId;
+		private Date appointmentDate;
 
 		@SuppressWarnings("unused")
 		public Appointment(String clmPID, String clmPatientName, String clmAge, String clmGender, String clmReason) {
@@ -104,6 +120,30 @@ public class DoctorAppointmentController implements Controller, Initializable {
 			this.clmReason.set(clmReason);
 		}
 
+		public void setPatientDTO(PatientDTO patientDTO) {
+			this.patientDTO = patientDTO;
+		}
+
+		public PatientDTO getPatientDTO() {
+			return patientDTO;
+		}
+		
+		public int getDoctorId() {
+			return doctorId;
+		}
+		
+		public void setDoctorId(int doctorId) {
+			this.doctorId = doctorId;
+		}
+		
+		public Date getAppointmentDate() {
+			return appointmentDate;
+		}
+		
+		public void setAppointmentDate(Date appointmentDate) {
+			this.appointmentDate = appointmentDate;
+		}
+
 	}
 
 	@Override
@@ -120,40 +160,84 @@ public class DoctorAppointmentController implements Controller, Initializable {
 		clmGender.setCellValueFactory(cellData -> cellData.getValue().getClmGender());
 		clmReason.setCellValueFactory(cellData -> cellData.getValue().getClmReason());
 
-		tableData.add(new Appointment("PID0003322", "N. Peries", "35", "Male", "Fever"));
-		tableData.add(new Appointment("PID0033442", "Kamal Kumara", "25", "Male", "Sore throat"));
-		tableData.add(new Appointment("PID0004433", "Nuwani Perera", "30", "Female", "Fever"));
-		System.out.println(tableData.size());
-		tblAppoinment.setItems(tableData);
-		
-		tblAppoinment.setOnMouseClicked(event ->{
-			
-			if(event.getClickCount() ==2 && tblAppoinment.getSelectionModel().getSelectedItem() != null) {
+		loadAppointments();
+
+		tblAppoinment.setOnMouseClicked(event -> {
+
+			if (event.getClickCount() == 2 && tblAppoinment.getSelectionModel().getSelectedItem() != null) {
 				Appointment patient = tblAppoinment.getSelectionModel().getSelectedItem();
-				Stage stage = new Stage();
-				stage.initModality(Modality.APPLICATION_MODAL);
-				
-				stage.setTitle("Diagnostic Card | PID :" + patient.getClmPID().get() + " |  Name :" + patient.getClmPatientName().get());
-				
-				stage.setMaximized(true);
-				
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("/fxml/consultation/consultation.fxml"));
-				AnchorPane anchorPane;
+
+				Stage childStage = new Stage();
+
+				DoctorConsultationDialogController dialogController = new DoctorConsultationDialogController();
+
+				childStage.setTitle("Diagnostic Card | PID :" + patient.getClmPID().get() + " |  Name :"
+						+ patient.getClmPatientName().get());
 				try {
-					anchorPane = loader.<AnchorPane>load();
-					Scene scene = new Scene(anchorPane);
-					stage.setScene(scene);
-					stage.showAndWait();
+					childStage.setScene(dialogController.getScene());
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
+				childStage.setMaximized(false);
+				childStage.setResizable(false);
+
+				((DoctorConsultationDialogController) dialogController.getLoader().getController())
+				.setDoctorId(patient.getDoctorId());
 				
+				((DoctorConsultationDialogController) dialogController.getLoader().getController())
+						.loadConsultationDialogData(patient.getPatientDTO());
+				
+				((DoctorConsultationDialogController) dialogController.getLoader().getController())
+				.setDiagnosisDate(patient.getAppointmentDate());
+
+				childStage.initModality(Modality.APPLICATION_MODAL);
+
+				childStage.initStyle(StageStyle.DECORATED);
+				childStage.show();
 			}
 		});
-		
+
 	}
 
+	@FXML
+	public void loadAppointments() {
+		tableData.clear();
+		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector();
+		try {
+			List<ChannelingDTO> channelingDTOs = apiConnector.getChannelingDetailsByDateAndDoctorId(new Date(), 3)
+					.getList();
+			for (ChannelingDTO channelingDTO : channelingDTOs) {
+				PatientDTO patientDTO = channelingDTO.getPatientDTO();
+				Appointment appointment = null;
+
+				if (patientDTO != null) {
+					appointment = new Appointment(String.valueOf(channelingDTO.getPid()),
+							patientDTO.getFirstName() + " " + patientDTO.getLastName(), "-",
+							patientDTO.getGenderCode() == 1 ? "Male" : "Female", channelingDTO.getReason());
+				} else {
+					appointment = new Appointment(String.valueOf(channelingDTO.getPid()), "-", "-", "-",
+							channelingDTO.getReason());
+				}
+
+				appointment.setAppointmentDate(channelingDTO.getDate());
+				appointment.setDoctorId(channelingDTO.getDoctorId());
+				appointment.setPatientDTO(patientDTO);
+				tableData.add(appointment);
+			}
+
+			tblAppoinment.setItems(tableData);
+
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }

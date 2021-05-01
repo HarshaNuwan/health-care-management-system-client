@@ -165,6 +165,15 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	public void loadChannelingPanel(ActionEvent event) {
+		try {
+			addTab(ModuleType.CHANNELING_MODULE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	private void addTab(ModuleType moduleType) throws IOException {
 		Tab t = null;
