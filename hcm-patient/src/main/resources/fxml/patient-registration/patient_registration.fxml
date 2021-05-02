@@ -6,62 +6,36 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:controller="edu.bit.hcm.patientregistration.PatientRegistrationController" maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-	prefWidth="639.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.patientregistration.PatientRegistrationController">
 	<children>
-		<Text fill="DARKCYAN" layoutX="8.0" layoutY="32.0"
-			strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Registration">
+		<Text fill="DARKCYAN" layoutX="8.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Registration">
 			<font>
 				<Font name="System Bold" size="24.0" />
 			</font>
 		</Text>
-		<AnchorPane prefHeight="200.0" prefWidth="200.0"
-			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+		<AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
 			<children>
-				<Text fill="TEAL" layoutX="8.0" layoutY="13.0"
-					strokeType="OUTSIDE" strokeWidth="0.0" text="Registered Patients">
+				<Text fill="TEAL" layoutX="8.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registered Patients">
 					<font>
 						<Font name="System Bold" size="12.0" />
 					</font>
 				</Text>
-				<Label layoutX="8.0" layoutY="22.0" prefHeight="17.0"
-					prefWidth="43.0" text="Search" textFill="DARKCYAN" />
-				<TextField id="txtPatRegSearch" layoutX="52.0"
-					layoutY="18.0" prefHeight="25.0" prefWidth="454.0"
-					promptText="Enter patient ID" />
-				<AnchorPane prefHeight="200.0" prefWidth="200.0"
-					AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
-					AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="48.0">
+				<Label layoutX="8.0" layoutY="22.0" prefHeight="17.0" prefWidth="43.0" text="Search" textFill="DARKCYAN" />
+				<TextField id="txtPatRegSearch" layoutX="52.0" layoutY="18.0" prefHeight="25.0" prefWidth="454.0" promptText="Enter patient ID" />
+				<AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="48.0">
 					<children>
-						<TableView id="tblPatReg" prefHeight="146.0"
-							prefWidth="513.0" AnchorPane.bottomAnchor="55.0"
-							AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-							AnchorPane.topAnchor="0.0">
+						<TableView id="tblPatReg" fx:id="tblPatients" onMouseClicked="#onPatientsTableClicked" prefHeight="146.0" prefWidth="513.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 							<columns>
-								<TableColumn id="clmPatRegPatientID"
-									prefWidth="89.0" text="Patient ID" />
-								<TableColumn id="clmPatRegPatientName"
-									prefWidth="294.0" text="Patient Name" />
-								<TableColumn id="clmPatRegNIC" prefWidth="129.0"
-									text="NIC Number" />
+								<TableColumn id="clmPatRegPatientID" fx:id="clmPatientId" prefWidth="89.0" text="Patient ID" />
+								<TableColumn id="clmPatRegPatientName" fx:id="clmPatientName" prefWidth="294.0" text="Patient Name" />
+								<TableColumn id="clmPatRegNIC" fx:id="clmNicNumber" prefWidth="129.0" text="NIC Number" />
 							</columns>
 						</TableView>
-						<AnchorPane AnchorPane.bottomAnchor="0.0"
-							AnchorPane.rightAnchor="0.0">
+						<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
 							<children>
-								<HBox maxHeight="1.7976931348623157E308"
-									maxWidth="1.7976931348623157E308" prefHeight="50.0"
-									prefWidth="207.0" AnchorPane.rightAnchor="5.0">
+								<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="207.0" AnchorPane.rightAnchor="5.0">
 									<children>
-										<Button id="btnPatRegNew"
-										onAction="#showPatientRegistrationDialog"
-											maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-											prefHeight="25.0" prefWidth="59.0"
-											style="-fx-background-color: #008080;" text="New"
-											textFill="WHITE" HBox.hgrow="ALWAYS">
+										<Button id="btnPatRegNew" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showPatientRegistrationDialog" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" HBox.hgrow="ALWAYS">
 											<padding>
 												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 											</padding>
@@ -69,23 +43,7 @@
 												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 											</HBox.margin>
 										</Button>
-										<Button id="btnPatRegEdit"
-											maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-											prefHeight="25.0" prefWidth="59.0"
-											style="-fx-background-color: #008080;" text="Edit"
-											textFill="WHITE" HBox.hgrow="ALWAYS">
-											<padding>
-												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-											</padding>
-											<HBox.margin>
-												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-											</HBox.margin>
-										</Button>
-										<Button id="btnPatRegDelete"
-											maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-											prefHeight="25.0" prefWidth="59.0"
-											style="-fx-background-color: #008080;" text="Delete"
-											textFill="WHITE" HBox.hgrow="ALWAYS">
+										<Button id="btnPatRegDelete" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" HBox.hgrow="ALWAYS">
 											<padding>
 												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
 											</padding>

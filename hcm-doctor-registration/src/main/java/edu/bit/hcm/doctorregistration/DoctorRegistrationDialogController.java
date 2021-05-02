@@ -16,7 +16,9 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import edu.bit.hcm.DoctorDTO;
+import edu.bit.hcm.SpecializationDTO;
 import edu.bit.hcm.framework.service.Controller;
+import edu.bit.hcm.wrapper.SpecializationDTOListWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -94,6 +96,29 @@ public class DoctorRegistrationDialogController implements Controller, Initializ
 		return this.loader;
 	}
 	
+	public void fillSpecializationCombobox() {
+		SpecializationConnector connector = new SpecializationConnector();
+		try {
+			SpecializationDTOListWrapper dtoListWrapper = connector.getAllSpecialization();
+			
+			for(SpecializationDTO dto : dtoListWrapper.getSpecializationLists()) {
+				cmbSpecialization.getItems().add(new DoctorSpecialization(dto.getSpecializationCode(), dto.getSpecializationName()));
+			}
+			
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	public void setParentController(DoctorRegistrationController doctorRegistrationController) {
 		this.doctorRegistrationController = doctorRegistrationController;
 	}
@@ -111,7 +136,7 @@ public class DoctorRegistrationDialogController implements Controller, Initializ
 			LocalDate localDate = LocalDate.parse(dob);
 			dtmDateOfBirth.setValue(localDate);
 		}
-		
+		cmbSpecialization.getSelectionModel().select(doctorDTO.getSpecializationCode() - 1);
 		txtTelephoneNumber.setText(doctorDTO.getTelephone());
 		txtMobileNumber.setText(doctorDTO.getMobile());
 		txtAddressLine1.setText(doctorDTO.getAddressL1());
@@ -318,11 +343,8 @@ public class DoctorRegistrationDialogController implements Controller, Initializ
 	public void initialize(URL location, ResourceBundle resources) {
 
 		addTextLimiter(txtNicNumber, 10);
-
-		cmbSpecialization.getItems().add(new DoctorSpecialization(1, "Test 1"));
-		cmbSpecialization.getItems().add(new DoctorSpecialization(2, "Test 2"));
-		cmbSpecialization.getItems().add(new DoctorSpecialization(2, "Test 3"));
 		
+		fillSpecializationCombobox();
 	}
 
 	public static void addTextLimiter(final TextField tf, final int maxLength) {

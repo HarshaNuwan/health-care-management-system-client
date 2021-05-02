@@ -124,22 +124,6 @@ public class DashboardController implements Initializable, Controller, Dashboard
 		}
 	}
 
-	public void viewPatient(ActionEvent event) throws IOException {
-		try {
-			addTab(ModuleType.VIEW_PATIENT_MODULE);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void prescription(ActionEvent event) throws IOException {
-		try {
-			addTab(ModuleType.PRESCRIPTION_MODULE);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void viewPrescription(ActionEvent event) throws IOException {
 		try {
 			addTab(ModuleType.VIEW_PRESCRIPTION_MODULE);
