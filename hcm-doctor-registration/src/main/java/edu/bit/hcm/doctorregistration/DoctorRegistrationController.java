@@ -69,6 +69,7 @@ public class DoctorRegistrationController implements Controller, Initializable {
 		childStage.setScene(dialogController.getScene());
 
 		((DoctorRegistrationDialogController) dialogController.getLoader().getController()).setParentController(this);
+		//((DoctorRegistrationDialogController) dialogController.getLoader().getController()).fillSpecializationCombobox();
 
 		childStage.initModality(Modality.APPLICATION_MODAL);
 
@@ -134,7 +135,6 @@ public class DoctorRegistrationController implements Controller, Initializable {
 			childStage.initModality(Modality.APPLICATION_MODAL);
 
 			childStage.initStyle(StageStyle.DECORATED);
-			childStage.setUserData(selectedUserAccount.getDoctorDTO());
 			childStage.show();
 
 		}

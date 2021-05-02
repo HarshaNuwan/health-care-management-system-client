@@ -9,8 +9,9 @@
    <children>
       <Pane layoutX="13.0" layoutY="271.0" prefHeight="52.0" prefWidth="513.0" style="-fx-border-color: #008B8B;">
          <children>
-            <Button id="btnPatRegSave" layoutX="374.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" onAction="#savePatientDetails" />
-            <Button id="btnPatRegClear" layoutX="440.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Clear" textFill="WHITE" />
+            <Button id="btnPatRegSave" layoutX="315.0" layoutY="14.0" mnemonicParsing="false" onAction="#savePatientDetails" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Save" textFill="WHITE" />
+            <Button id="btnPatRegClear" onAction="#clearForm" layoutX="381.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Clear" textFill="WHITE" />
+            <Button id="btnPatRegClose" fx:id="btnClose" onAction="#closeDialog" layoutX="447.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Close" textFill="WHITE" />
          </children>
       </Pane>
       <Pane layoutX="13.0" layoutY="196.0" prefHeight="68.0" prefWidth="513.0" style="-fx-background-color: #E0FFFF; -fx-border-color: #008B8B;">
@@ -38,7 +39,7 @@
             <Label layoutX="13.0" layoutY="121.0" text="Date of Birth" textFill="DARKCYAN" />
             <DatePicker id="datPatRegDOB" fx:id="dtpDateofBirth" layoutX="89.0" layoutY="116.0" prefHeight="25.0" prefWidth="130.0" />
             <Label layoutX="14.0" layoutY="147.0" text="Age" textFill="DARKCYAN" />
-            <TextField id="txtPatRegAge" fx:id="txtAge" layoutX="89.0" layoutY="142.0" prefHeight="25.0" prefWidth="130.0" promptText="Age"/>
+            <TextField id="txtPatRegAge" fx:id="txtAge" layoutX="89.0" layoutY="142.0" prefHeight="25.0" prefWidth="130.0" promptText="Age" />
             <Label id="lblAddress" layoutX="266.0" layoutY="19.0" text="Address Line1" textFill="DARKCYAN" />
             <TextField id="txtPatRegAddress1" fx:id="txtAddressLine1" layoutX="371.0" layoutY="15.0" prefHeight="25.0" prefWidth="130.0" promptText="Address line1" />
             <Label layoutX="266.0" layoutY="45.0" text="Address Line2" textFill="DARKCYAN" />

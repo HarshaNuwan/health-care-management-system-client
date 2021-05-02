@@ -75,8 +75,6 @@
 				<Menu mnemonicParsing="false" text="Patient">
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#patientRegistration" text="Patient Registration" />
-						<MenuItem mnemonicParsing="false" onAction="#viewPatient" text="View Patient" />
-						<MenuItem mnemonicParsing="false" onAction="#prescription" text="Prescription" />
 						<MenuItem mnemonicParsing="false" onAction="#viewPrescription" text="View Prescription" />
                   <MenuItem fx:id="mnuItmChanneling" mnemonicParsing="false" text="Channeling" onAction="#loadChannelingPanel" />
 						<CustomMenuItem mnemonicParsing="false" text="Prescription">

@@ -38,7 +38,7 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 
 	private Date diagnosisDate;
 	private int pid, doctorId;
-	
+
 	@FXML
 	private TextField txtNic, txtTitle, txtFirstName, txtLastName, txtDOB, txtAge, txtAddressLine1, txtAddressLine2,
 			txtAddressLine3, txtMobileNo, txtTelephoneNo, txtEmail, txtGender, txtBloodGroup, txtHeight, txtWeight;
@@ -51,7 +51,7 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 
 	@FXML
 	private Button btnClear;
-	
+
 	@FXML
 	private Button btnSave;
 
@@ -68,24 +68,36 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 		clmDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().date));
 		clmDiagnosis.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().diagnosis));
 
+		tblDiagnosis.setOnMouseClicked(event -> {
+
+			if (event.getClickCount() == 2 && tblDiagnosis.getSelectionModel().getSelectedItem() != null) {
+				Diagnosis diagnosis = tblDiagnosis.getSelectionModel().getSelectedItem();
+				txtDiagnosis.setText(diagnosis.getDiagnosisDTO().getDiagnosis());
+				txtPrescription.setText(diagnosis.getDiagnosisDTO().getPrescription());
+				txtLabTests.setText(diagnosis.getDiagnosisDTO().getReports());
+			}
+		});
+
 	}
-	
-	
+
 	private void loadDiagnosisDetails() {
 		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector();
 		tableData.clear();
-		
+
 		try {
-			
-			System.out.println(this.pid + "  >>>>> " + this.doctorId);
-			DiagnosisDTOListWrapper dtoListWrapper = apiConnector.getDiagnosisDetaislByPidAndDoctorId(this.pid, this.doctorId);
-			for(DiagnosisDTO diagnosisDTO : dtoListWrapper.getList()) {
+
+			DiagnosisDTOListWrapper dtoListWrapper = apiConnector.getDiagnosisDetaislByPidAndDoctorId(this.pid,
+					this.doctorId);
+			for (DiagnosisDTO diagnosisDTO : dtoListWrapper.getList()) {
 				Diagnosis diagnosis = new Diagnosis();
-				diagnosis.setDate(diagnosisDTO.getDate() != null ? new SimpleDateFormat("yyyy-MM-dd").format(diagnosisDTO.getDate()) : "-");
+				diagnosis.setDate(diagnosisDTO.getDate() != null
+						? new SimpleDateFormat("yyyy-MM-dd").format(diagnosisDTO.getDate())
+						: "-");
 				diagnosis.setDiagnosis(diagnosisDTO.getDiagnosis());
+				diagnosis.setDiagnosisDTO(diagnosisDTO);
 				tableData.add(diagnosis);
 			}
-			
+
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,14 +108,14 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		tblDiagnosis.setItems(tableData);
 	}
-	
+
 	@FXML
 	public void saveDiagnosisData(ActionEvent event) {
 		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector();
-		
+
 		DiagnosisDTO diagnosisDTO = new DiagnosisDTO();
 		diagnosisDTO.setDate(diagnosisDate);
 		diagnosisDTO.setDiagnosis(txtDiagnosis.getText());
@@ -111,7 +123,7 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 		diagnosisDTO.setReports(txtLabTests.getText());
 		diagnosisDTO.setDoctorId(this.doctorId);
 		diagnosisDTO.setPid(this.pid);
-		
+
 		try {
 			apiConnector.createNewDiagnosis(diagnosisDTO);
 			clearForm(event);
@@ -157,18 +169,18 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 			txtBloodGroup.setText(patientDTO.getBloodGroupCode() + " ");
 			txtHeight.setText(patientDTO.getHeight());
 			txtWeight.setText(patientDTO.getWeight());
-			
+
 			this.pid = patientDTO.getPid();
-			
+
 			loadDiagnosisDetails();
 		}
 
 	}
-	
+
 	public void setDoctorId(int doctorId) {
 		this.doctorId = doctorId;
 	}
-	
+
 	public void setDiagnosisDate(Date diagnosisDate) {
 		this.diagnosisDate = diagnosisDate;
 	}
@@ -208,6 +220,7 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 
 	private class Diagnosis {
 		private String date, diagnosis;
+		private DiagnosisDTO diagnosisDTO;
 
 		public Diagnosis() {
 			// TODO Auto-generated constructor stub
@@ -227,6 +240,14 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 
 		public void setDiagnosis(String diagnosis) {
 			this.diagnosis = diagnosis;
+		}
+
+		public void setDiagnosisDTO(DiagnosisDTO diagnosisDTO) {
+			this.diagnosisDTO = diagnosisDTO;
+		}
+
+		public DiagnosisDTO getDiagnosisDTO() {
+			return diagnosisDTO;
 		}
 
 	}
