@@ -12,6 +12,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import edu.bit.hcm.ChannelingDTO;
 import edu.bit.hcm.PatientDTO;
 import edu.bit.hcm.framework.service.Controller;
+import edu.bit.hcm.framework.util.LoggedUser;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -205,7 +206,7 @@ public class DoctorAppointmentController implements Controller, Initializable {
 		tableData.clear();
 		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector();
 		try {
-			List<ChannelingDTO> channelingDTOs = apiConnector.getChannelingDetailsByDateAndDoctorId(new Date(), 3)
+			List<ChannelingDTO> channelingDTOs = apiConnector.getChannelingDetailsByDateAndDoctorId(new Date(), LoggedUser.getInstance().getDoctorId())
 					.getList();
 			for (ChannelingDTO channelingDTO : channelingDTOs) {
 				PatientDTO patientDTO = channelingDTO.getPatientDTO();

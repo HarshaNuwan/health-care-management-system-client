@@ -47,12 +47,14 @@
                   <Label layoutX="12.0" layoutY="34.0" text="User Name" textFill="DARKCYAN" />
                   <Label layoutX="12.0" layoutY="68.0" text="Password" textFill="DARKCYAN" />
                   <Label layoutX="12.0" layoutY="104.0" text="User Role" textFill="DARKCYAN" />
-                  <Label layoutX="12.0" layoutY="136.0" text="Account Status" textFill="DARKCYAN" />
+                  <Label layoutX="12.0" layoutY="173.0" text="Account Status" textFill="DARKCYAN" />
                   <TextField id="txtUserMngCreatedDate" fx:id="txt_user_name" layoutX="95.0" layoutY="30.0" prefHeight="25.0" prefWidth="239.0" />
                   <PasswordField id="txtUserMngPassword" fx:id="txt_password" layoutX="95.0" layoutY="64.0" prefHeight="25.0" prefWidth="239.0" />
                   <ComboBox fx:id="cmb_userRole" layoutX="95.0" layoutY="99.0" prefHeight="25.0" prefWidth="239.0" />
-                  <RadioButton fx:id="accountActiveRadioButton" layoutX="123.0" layoutY="138.0" mnemonicParsing="false" text="Active" />
-                  <RadioButton fx:id="accountDisableRadioButton" layoutX="196.0" layoutY="138.0" mnemonicParsing="false" text="Dissable" />
+                  <RadioButton fx:id="accountActiveRadioButton" layoutX="123.0" layoutY="175.0" mnemonicParsing="false" text="Active" />
+                  <RadioButton fx:id="accountDisableRadioButton" layoutX="196.0" layoutY="175.0" mnemonicParsing="false" text="Dissable" />
+                  <Label layoutX="11.0" layoutY="142.0" text="Doctor Name" textFill="DARKCYAN" />
+                  <ComboBox fx:id="cmbDoctorName" layoutX="95.0" layoutY="138.0" prefHeight="25.0" prefWidth="239.0" promptText="Select Doctor" />
                </children>
             </Pane>
             <Pane layoutX="689.0" layoutY="428.0" prefHeight="52.0" prefWidth="353.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">

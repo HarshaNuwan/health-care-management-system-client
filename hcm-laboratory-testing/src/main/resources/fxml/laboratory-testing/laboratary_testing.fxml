@@ -1,52 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bit.hcm.laboratorytesting.LaboratoryTestingController">
    <children>
-      <Text fill="DARKCYAN" layoutX="55.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laboratary Testing">
+      <Text fill="DARKCYAN" layoutX="6.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laboratory">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Pane layoutX="51.0" layoutY="72.0" prefHeight="285.0" prefWidth="503.0" style="-fx-border-color: #008B8B;">
+      <AnchorPane layoutY="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Label id="lblLabPID" layoutX="31.0" layoutY="40.0" text="PID">
+            <TableView fx:id="tblPendingLabtestings" layoutY="56.0" prefHeight="494.0" prefWidth="914.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+              <columns>
+                <TableColumn fx:id="clmPID" prefWidth="74.0" text="Patient ID" />
+                <TableColumn fx:id="clmPatientName" prefWidth="149.0" text="Patient Name" />
+                  <TableColumn fx:id="clmPrescriptionID" prefWidth="178.0" text="Diagnosis ID" />
+                  <TableColumn fx:id="cmlStatus" prefWidth="75.0" text="Status" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <DatePicker fx:id="datePicker" layoutX="48.0" layoutY="24.0" />
+            <Button id="btnUserMngSave" fx:id="btnRefresh" layoutX="234.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnRefreshClicked" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Refresh" textFill="WHITE" />
+            <Text fill="DARKCYAN" layoutX="11.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+            <Text fill="DARKCYAN" layoutX="6.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prescriptions">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
-            </Label>
-            <TextField id="txtLabPID" layoutX="64.0" layoutY="36.0" prefHeight="25.0" prefWidth="96.0" promptText="Enter PID" />
-            <Button id="btnLabSearch" layoutX="191.0" layoutY="36.0" mnemonicParsing="false" style="-fx-background-color: #008080;" text="Search" textFill="WHITE" />
-            <Label layoutX="31.0" layoutY="86.0" text="Laboratary Testing(s)" textFill="DARKCYAN">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TableView id="tblViewLabTest" layoutX="31.0" layoutY="121.0" prefHeight="114.0" prefWidth="424.0">
-              <columns>
-                <TableColumn id="clmLabTestDate" prefWidth="75.0" text="Date" />
-                <TableColumn id="clmLabTestRequestID" prefWidth="75.0" text="Request_ID" />
-              </columns>
-            </TableView>
+            </Text>
          </children>
-      </Pane>
-      <Pane layoutX="53.0" layoutY="372.0" prefHeight="167.0" prefWidth="503.0" style="-fx-border-color: #008B8B;">
-         <children>
-            <Label layoutX="35.0" layoutY="21.0" text="Report Upload" textFill="DARKCYAN">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField id="txtLabUploadRequestID" layoutX="35.0" layoutY="53.0" prefHeight="25.0" prefWidth="114.0" promptText="Enter Request ID" />
-            <Button id="btnLabUpload" layoutX="189.0" layoutY="53.0" mnemonicParsing="false" style="-fx-background-color: #008080;" text="Upload" textFill="WHITE" />
-            <ProgressIndicator id="indLabUpload" layoutX="276.0" layoutY="46.0" progress="0.0" />
-         </children>
-      </Pane>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -14,8 +14,7 @@ import edu.bit.hcm.viewprescription.ViewPrescriptionModule;
 
 /**
  * 
- * @author Harsha Hulangamuwa
- * 
+ *  
  *         !Important Note This factory should be modified to load modules from
  *         a configuration file and load modules dynamically rather than hard
  *         coded module names form the ModuleType enum
