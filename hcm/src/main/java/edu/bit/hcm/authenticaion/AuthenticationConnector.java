@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.http.ResponseEntity;
 
+import edu.bit.hcm.UserDTO;
 import edu.bit.hcm.authenticaion.request.AuthenticationRequest;
 import edu.bit.hcm.framework.util.LoggedUser;
 import edu.bit.hcm.framework.util.RESTConnector;
@@ -24,7 +26,21 @@ public class AuthenticationConnector {
 		
 		ResponseEntity<String> resp = (ResponseEntity<String>) RESTConnector.getResponse(LoggedUser.getInstance().getJwtToken(), authenticationRequest);
 		
-		LoggedUser.getInstance().setJwtToken(RESTConnector.getFieldFromJSON("token", resp.getBody())).setUserName(userName);
+		ObjectNode node = RESTConnector.getObjectFromJSON("dto", resp.getBody());
+		if(node == null) {
+			return false;
+		}
+		UserDTO userDTO = new UserDTO();
+		userDTO.setUsername(node.get("dto").get("username").asText());
+		userDTO.setDoctorId(node.get("dto").get("doctorId").asInt());
+		userDTO.setUserRoleId(node.get("dto").get("userRoleId").asInt());
+		
+		LoggedUser.getInstance().setJwtToken(RESTConnector.getFieldFromJSON("token", resp.getBody()))
+		.setUserName(userDTO.getUsername());
+		LoggedUser.getInstance().setDoctorId(userDTO.getDoctorId());
+		LoggedUser.getInstance().setUserRoleId(userDTO.getUserRoleId());
+		
+		System.out.println(LoggedUser.getInstance().toString());
 		
 		if(resp == null || RESTConnector.getFieldFromJSON("token", resp.getBody()) == null) {
 			return false;

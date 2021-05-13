@@ -24,6 +24,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -44,14 +46,14 @@ public class DashboardController implements Initializable, Controller, Dashboard
 
 	@FXML
 	private Label lbl_username;
-	
+
 	private boolean isLeftMenuOpen;
 
 	private DashboardLeftPaneController dashboardLeftPaneController;
 
 	public DashboardController() {
 		loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/fxml/dashboard/dashboard.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/dashboard/dashboard_.fxml"));
 
 		dashboardLeftPaneController = new DashboardLeftPaneController();
 
@@ -131,7 +133,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	public void loadUserManagementPanel(ActionEvent event) {
 		try {
@@ -140,7 +142,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	public void loadAppointmentsPanel(ActionEvent event) {
 		try {
@@ -149,7 +151,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	public void loadChannelingPanel(ActionEvent event) {
 		try {
@@ -169,7 +171,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			t = new Tab(module.getModuleTitle());
 			closeTab(t, moduleType);
 			ScrollPane scrollPane = new ScrollPane();
-			AnchorPane anchorPane = (AnchorPane)module.getController().getScene().getRoot();
+			AnchorPane anchorPane = (AnchorPane) module.getController().getScene().getRoot();
 			anchorPane.prefHeightProperty().bind(scrollPane.heightProperty());
 			anchorPane.prefWidthProperty().bind(scrollPane.widthProperty());
 			scrollPane.setContent(anchorPane);
@@ -181,10 +183,9 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			dashboardTabPane.getTabs().add(t);
 		}
 		dashboardTabPane.getSelectionModel().select(t);
-		
+
 		System.out.println(dashboardTabPane.getTabs());
 	}
-	
 
 	@FXML
 	void logOut(ActionEvent event) {
@@ -195,9 +196,9 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			if (rs == ButtonType.OK) {
 				StageMap.getInstance().getStage("MAIN_STAGE").hide();
 				StageMap.getInstance().getStage("PRIMARY_STAGE").show();
-				//clear JWT 
+				// clear JWT
 				LoggedUser.getInstance().logout();
-				
+
 			} else if (rs == ButtonType.CANCEL) {
 				alert.close();
 			}
@@ -212,7 +213,55 @@ public class DashboardController implements Initializable, Controller, Dashboard
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		lbl_username.setText("User : "+LoggedUser.getInstance().getUserName());
+		lbl_username.setText("User : " + LoggedUser.getInstance().getUserName());
+		buildMenu();
+	}
+
+	@FXML
+	private Menu mnuFile, mnuAdmin, mnuDoctor, mnuPatient, mnuLaboratory, mnuHelp;
+
+	@FXML
+	private MenuItem mnuItmLogout, mnuItmExit, mnuItmUserManagement, mnuItmDoctorRegistration, mnuItmAppointments, 
+	mnuItmPatientRegistration, mnuItmViewPrescription, mnuItmChanneling, mnuItemLaboratoryTesting, mnuItmAbout;
+
+	private void buildMenu() {
+		int userRoleId = LoggedUser.getInstance().getUserRoleId();
+		System.out.println(LoggedUser.getInstance().toString());
+		switch (userRoleId) {
+		case 1:
+			//1, "Admin"
+			break;
+		case 2:
+			//2, "Doctor"
+			mnuAdmin.setVisible(false);
+			mnuPatient.setVisible(false);
+			mnuLaboratory.setVisible(false);
+			break;
+		case 3:
+			//3, "Pharmesist"
+			mnuAdmin.setVisible(false);
+			mnuDoctor.setVisible(false);
+			mnuPatient.setVisible(false);
+			mnuLaboratory.setVisible(false);
+			break;
+		case 4:
+			//4, "Lab Operator"
+			mnuAdmin.setVisible(false);
+			mnuDoctor.setVisible(false);
+			mnuPatient.setVisible(false);
+			break;
+		case 5:
+			//5, "Front Desk"
+			mnuAdmin.setVisible(false);
+			mnuDoctor.setVisible(false);
+			//mnuPatient.setVisible(false);
+			mnuLaboratory.setVisible(false);
+			
+			mnuItmViewPrescription.setVisible(false);
+			break;
+		default:
+			break;
+		}
 	}
 
 }

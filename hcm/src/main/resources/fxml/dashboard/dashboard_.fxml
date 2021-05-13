@@ -36,7 +36,7 @@
 				</Pane>
 			</bottom>
 			<top>
-				<Pane maxHeight="100.0" prefHeight="88.0" prefWidth="841.0" style="-fx-background-color: linear-gradient(from 30% 30% to 100% 100%, #07a7e6,#03445e);" BorderPane.alignment="CENTER">
+				<Pane maxHeight="100.0" prefHeight="32.0" prefWidth="841.0" style="-fx-background-color: linear-gradient(from 30% 30% to 100% 100%, #07a7e6,#03445e);" visible="false" BorderPane.alignment="CENTER">
 					<children>
 						<Label layoutX="49.0" layoutY="45.0" text="Find Patient">
 							<font>
@@ -50,48 +50,43 @@
 				</Pane>
 			</top>
 			<center>
-				<TabPane fx:id="dashboardTabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
+				<TabPane fx:id="dashboardTabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="334.0" prefWidth="841.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
 			</center>
 		</BorderPane>
 		<MenuBar style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 			<menus>
-				<Menu mnemonicParsing="false" text="File">
+				<Menu fx:id="mnuFile" mnemonicParsing="false" text="File">
 					<items>
-						<MenuItem mnemonicParsing="false" onAction="#logOut" text="Logout" />
-						<MenuItem mnemonicParsing="false" style="-fx-padding: 3 100 3 3" text="Exit" />
+						<MenuItem fx:id="mnuItmLogout" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+						<MenuItem fx:id="mnuItmExit" mnemonicParsing="false" style="-fx-padding: 3 100 3 3" text="Exit" />
 					</items>
 				</Menu>
-            <Menu mnemonicParsing="false" text="System Administration">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#loadUserManagementPanel" text="User Management" />
-						<MenuItem mnemonicParsing="false" onAction="#doctorRegistration" text="Doctor Registration" />
-              </items>
-            </Menu>
-				<Menu mnemonicParsing="false" text="Doctor">
-               <items>
-                  <MenuItem fx:id="mnu_itm_appointments" mnemonicParsing="false" onAction="#loadAppointmentsPanel" text="Appointments" />
-               </items>
-				</Menu>
-				<Menu mnemonicParsing="false" text="Patient">
+				<Menu fx:id="mnuAdmin" mnemonicParsing="false" text="System Administration">
 					<items>
-						<MenuItem mnemonicParsing="false" onAction="#patientRegistration" text="Patient Registration" />
-						<MenuItem mnemonicParsing="false" onAction="#viewPrescription" text="View Prescription" />
-                  <MenuItem fx:id="mnuItmChanneling" mnemonicParsing="false" text="Channeling" onAction="#loadChannelingPanel" />
-						<CustomMenuItem mnemonicParsing="false" text="Prescription">
-							<graphic>
-								<Button mnemonicParsing="false" text="Add to favorite" />
-							</graphic>
-						</CustomMenuItem>
+						<MenuItem fx:id="mnuItmUserManagement" mnemonicParsing="false" onAction="#loadUserManagementPanel" text="User Management" />
+						<MenuItem fx:id="mnuItmDoctorRegistration" mnemonicParsing="false" onAction="#doctorRegistration" text="Doctor Registration" />
 					</items>
 				</Menu>
-				<Menu mnemonicParsing="false" text="Laboratary ">
+				<Menu fx:id="mnuDoctor" mnemonicParsing="false" text="Doctor">
 					<items>
-						<MenuItem mnemonicParsing="false" onAction="#laboratoryTesting" text="Laboratary Testing" />
+						<MenuItem fx:id="mnuItmAppointments" mnemonicParsing="false" onAction="#loadAppointmentsPanel" text="Appointments" />
 					</items>
 				</Menu>
-				<Menu mnemonicParsing="false" text="Help">
+				<Menu fx:id="mnuPatient" mnemonicParsing="false" text="Patient">
 					<items>
-						<MenuItem mnemonicParsing="false" text="About" />
+						<MenuItem fx:id="mnuItmPatientRegistration" mnemonicParsing="false" onAction="#patientRegistration" text="Patient Registration" />
+						<MenuItem fx:id="mnuItmViewPrescription" mnemonicParsing="false" onAction="#viewPrescription" text="View Prescription" />
+						<MenuItem fx:id="mnuItmChanneling" mnemonicParsing="false" onAction="#loadChannelingPanel" text="Channeling" />
+					</items>
+				</Menu>
+				<Menu fx:id="mnuLaboratory" mnemonicParsing="false" text="Laboratary ">
+					<items>
+						<MenuItem fx:id="mnuItemLaboratoryTesting" mnemonicParsing="false" onAction="#laboratoryTesting" text="Laboratary Testing" />
+					</items>
+				</Menu>
+				<Menu fx:id="mnuHelp" mnemonicParsing="false" text="Help">
+					<items>
+						<MenuItem fx:id="mnuItmAbout" mnemonicParsing="false" text="About" />
 					</items>
 				</Menu>
 			</menus>

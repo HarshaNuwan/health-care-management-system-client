@@ -10,8 +10,10 @@ import edu.bit.hcm.UserDTO;
 import edu.bit.hcm.framework.util.LoggedUser;
 import edu.bit.hcm.framework.util.RESTConnector;
 import edu.bit.hcm.user.registration.request.DeleteUserRequest;
+import edu.bit.hcm.user.registration.request.RetriveAllDoctorsRequest;
 import edu.bit.hcm.user.registration.request.RetriveAllUsersRequest;
 import edu.bit.hcm.user.registration.request.UserSignUpRequest;
+import edu.bit.hcm.wrapper.DoctorDTOListWrapper;
 import edu.bit.hcm.wrapper.UserDTOListWrapper;
 
 public class UserConnector {
@@ -44,5 +46,15 @@ public class UserConnector {
 		ResponseEntity<String> resp = (ResponseEntity<String>) RESTConnector.getResponse(LoggedUser.getInstance().getJwtToken(), deleteUserRequest);
 		
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public DoctorDTOListWrapper getAllDoctors()
+			throws JsonGenerationException, JsonMappingException, IOException {
+		RetriveAllDoctorsRequest retriveAllDoctorsRequest = new RetriveAllDoctorsRequest();
+		ResponseEntity<DoctorDTOListWrapper> resp = (ResponseEntity<DoctorDTOListWrapper>) RESTConnector
+				.getResponse(LoggedUser.getInstance().getJwtToken(), retriveAllDoctorsRequest);
+
+		return resp.getBody();
 	}
 }

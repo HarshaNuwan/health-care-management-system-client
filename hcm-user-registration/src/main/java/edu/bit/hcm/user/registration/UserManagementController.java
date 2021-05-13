@@ -10,8 +10,10 @@ import java.util.ResourceBundle;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
+import edu.bit.hcm.DoctorDTO;
 import edu.bit.hcm.UserDTO;
 import edu.bit.hcm.framework.service.Controller;
+import edu.bit.hcm.wrapper.DoctorDTOListWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -21,12 +23,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -59,6 +64,9 @@ public class UserManagementController implements Controller, Initializable {
 
 	@FXML
 	private ComboBox<UserRole> cmb_userRole;
+
+	@FXML
+	private ComboBox<Doctor> cmbDoctorName;
 
 	@FXML
 	private TextField txt_user_id;
@@ -132,6 +140,11 @@ public class UserManagementController implements Controller, Initializable {
 		UserConnector connector = new UserConnector();
 		if (null != selectedUserDTO) {
 
+			if(selectedUserDTO.getUserRoleId() == 1) {
+				showAlert("Deleting Admin", "You can't delete an Admin user account!", AlertType.WARNING);
+				return;
+			}
+			
 			try {
 				connector.deleteUser(selectedUserDTO);
 				clearForm();
@@ -158,10 +171,18 @@ public class UserManagementController implements Controller, Initializable {
 			userDTO.setUserId(selectedUserDTO.getUserId());
 		}
 
+		if (cmb_userRole.getSelectionModel().getSelectedItem().userRoleId == 2
+				&& cmbDoctorName.getSelectionModel().getSelectedIndex() == -1) {
+			showAlert("Doctor is missing", "Please select the relevant doctor!", AlertType.INFORMATION);
+			return;
+		}else if(cmb_userRole.getSelectionModel().getSelectedItem().userRoleId == 2){
+			userDTO.setDoctorId(cmbDoctorName.getSelectionModel().getSelectedItem().getDoctorId());
+		}
+
 		if (!txt_password.getText().isEmpty()) {
 			userDTO.setPassword(txt_password.getText());
 		}
-		
+
 		userDTO.setUsername(txt_user_name.getText());
 
 		userDTO.setTimeStamp(new Date().getTime());
@@ -196,12 +217,13 @@ public class UserManagementController implements Controller, Initializable {
 	public void clearUserForm() {
 		clearForm();
 	}
-	
+
 	private void clearForm() {
 		txt_user_name.clear();
 		txt_password.clear();
 		accountActiveRadioButton.setSelected(true);
-		cmb_userRole.getSelectionModel().select(0);
+		cmb_userRole.getSelectionModel().select(-1);
+		cmbDoctorName.getSelectionModel().select(-1);
 		selectedUserDTO = null;
 	}
 
@@ -217,6 +239,63 @@ public class UserManagementController implements Controller, Initializable {
 			} else {
 				accountDisableRadioButton.setSelected(true);
 			}
+
+			if (selectedUserDTO.getDoctorId() != null) {
+				setSelectedDoctor(selectedUserDTO.getDoctorId());
+			}
+		}
+	}
+
+	private void setSelectedDoctor(int docId) {
+		cmbDoctorName.getSelectionModel().select(new Doctor(docId, null));
+	}
+	
+	private class Doctor {
+		private int doctorId;
+		private String doctorName;
+
+		public Doctor() {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public Doctor(int doctorId, String doctorName) {
+			super();
+			this.doctorId = doctorId;
+			this.doctorName = doctorName;
+		}
+
+
+
+		public int getDoctorId() {
+			return doctorId;
+		}
+
+		public void setDoctorId(int doctorId) {
+			this.doctorId = doctorId;
+		}
+
+		public String getDoctorName() {
+			return doctorName;
+		}
+
+		public void setDoctorName(String doctorName) {
+			this.doctorName = doctorName;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			
+			if(obj != null && this.doctorId == ((Doctor)obj).doctorId) {
+				return true;
+			}
+			
+			return false;
+		}
+
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return this.doctorName;
 		}
 	}
 
@@ -305,6 +384,8 @@ public class UserManagementController implements Controller, Initializable {
 		accountDisableRadioButton.setToggleGroup(accountStatusToggleGroup);
 		accountActiveRadioButton.setSelected(true);
 
+		loadDoctors();
+
 		// userTable.setItems(tableData);
 		loadUserAccounts(userTable);
 		clmUserMngUserID.setCellValueFactory(cellData -> cellData.getValue().getClmUserMngUserID());
@@ -318,8 +399,22 @@ public class UserManagementController implements Controller, Initializable {
 		cmb_userRole.getItems().add(new UserRole(2, "Doctor"));
 		cmb_userRole.getItems().add(new UserRole(3, "Pharmesist"));
 		cmb_userRole.getItems().add(new UserRole(4, "Lab Operator"));
+		cmb_userRole.getItems().add(new UserRole(5, "Front Desk"));
 		cmb_userRole.getSelectionModel().select(0);
 
+	}
+	
+	private void showAlert(String title, String content, AlertType alertType) {
+		Alert alert = new Alert(alertType);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(content);
+		alert.showAndWait().ifPresent(rs -> {
+			if (rs == ButtonType.OK) {
+				alert.close();
+			}
+
+		});
 	}
 
 	private void loadUserAccounts(TableView<UserAccount> table) {
@@ -329,7 +424,7 @@ public class UserManagementController implements Controller, Initializable {
 			List<UserDTO> userList = userConnector.getAllUsers().getUsers();
 
 			for (UserDTO dto : userList) {
-				UserAccount ua = new UserAccount(dto.getUserId().toString(), dto.getUsername(),
+				UserAccount ua = new UserAccount(String.valueOf(dto.getUserId()), dto.getUsername(),
 						userRoleConverter(dto.getUserRoleId()), dto.isActive() ? "Active" : "Deactive");
 				ua.setCreatedDate(new Date(dto.getTimeStamp()));
 				ua.setUserDTO(dto);
@@ -349,6 +444,31 @@ public class UserManagementController implements Controller, Initializable {
 		}
 	}
 
+	private void loadDoctors() {
+		cmbDoctorName.getItems().clear();
+		UserConnector userConnector = new UserConnector();
+		try {
+			DoctorDTOListWrapper doctorDTOListWrapper = userConnector.getAllDoctors();
+			List<DoctorDTO> doctorList = doctorDTOListWrapper.getDoctors();
+
+			for (DoctorDTO doctorDTO : doctorList) {
+				Doctor doctor = new Doctor();
+				doctor.setDoctorId(doctorDTO.getDoctorId());
+				doctor.setDoctorName(doctorDTO.getFirstName() + " " + doctorDTO.getLastName());
+
+				cmbDoctorName.getItems().add(doctor);
+			}
+
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	private String userRoleConverter(int userRoleId) {
 		switch (userRoleId) {
 		case 1:
@@ -359,7 +479,8 @@ public class UserManagementController implements Controller, Initializable {
 			return "Pharmesist";
 		case 4:
 			return "Lab Operator";
-
+		case 5: 
+			return "Front Desk";
 		default:
 			return null;
 		}

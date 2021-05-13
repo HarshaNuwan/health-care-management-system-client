@@ -5,6 +5,7 @@ public class LoggedUser {
 	private static LoggedUser instance;
 	private String userName, jwtToken;
 	private int doctorId;
+	private int userRoleId;
 	
 	
 	private LoggedUser() {
@@ -26,7 +27,7 @@ public class LoggedUser {
 	
 	public LoggedUser setJwtToken(String jwtToken) {
 		this.jwtToken = jwtToken;
-		return this.instance;
+		return getInstance();
 	}
 	
 	public String getUserName() {
@@ -35,7 +36,7 @@ public class LoggedUser {
 	
 	public LoggedUser setUserName(String userName) {
 		this.userName = userName;
-		return this.instance;
+		return getInstance();
 	}
 
 	public void logout() {
@@ -48,7 +49,22 @@ public class LoggedUser {
 		return doctorId;
 	}
 	
-	public void setDoctorId(int doctorId) {
+	public LoggedUser setDoctorId(int doctorId) {
 		this.doctorId = doctorId;
+		return getInstance();
+	}
+	
+	public int getUserRoleId() {
+		return userRoleId;
+	}
+	
+	public void setUserRoleId(int userRoleId) {
+		this.userRoleId = userRoleId;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.userName + " | did: " + this.doctorId + " | urid: " + this.userRoleId;
 	}
 }
