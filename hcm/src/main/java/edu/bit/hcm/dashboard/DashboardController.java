@@ -237,7 +237,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 	}
 
 	@FXML
-	private Menu mnuFile, mnuAdmin, mnuDoctor, mnuPatient, mnuLaboratory, mnuHelp;
+	private Menu mnuFile, mnuAdmin, mnuDoctor, mnuPatient, mnuLaboratory, mnuHelp, mnuPharmacy;
 
 	@FXML
 	private MenuItem mnuItmLogout, mnuItmExit, mnuItmUserManagement, mnuItmDoctorRegistration, mnuItmAppointments, 
@@ -255,6 +255,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			mnuAdmin.setVisible(false);
 			mnuPatient.setVisible(false);
 			mnuLaboratory.setVisible(false);
+			mnuPharmacy.setVisible(false);
 			break;
 		case 3:
 			//3, "Pharmesist"
@@ -268,12 +269,13 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			mnuAdmin.setVisible(false);
 			mnuDoctor.setVisible(false);
 			mnuPatient.setVisible(false);
+			mnuPharmacy.setVisible(false);
 			break;
 		case 5:
 			//5, "Front Desk"
 			mnuAdmin.setVisible(false);
 			mnuDoctor.setVisible(false);
-			//mnuPatient.setVisible(false);
+			mnuPharmacy.setVisible(false);
 			mnuLaboratory.setVisible(false);
 			
 			mnuItmViewPrescription.setVisible(false);
