@@ -58,27 +58,31 @@
 				<Menu fx:id="mnuFile" mnemonicParsing="false" text="File">
 					<items>
 						<MenuItem fx:id="mnuItmLogout" mnemonicParsing="false" onAction="#logOut" text="Logout" />
-						<MenuItem fx:id="mnuItmExit" mnemonicParsing="false" style="-fx-padding: 3 100 3 3" text="Exit" />
+						<MenuItem fx:id="mnuItmExit" mnemonicParsing="false" onAction="#exitMenu" style="-fx-padding: 3 100 3 3" text="Exit" />
 					</items>
 				</Menu>
-				<Menu fx:id="mnuAdmin" mnemonicParsing="false" text="System Administration">
-					<items>
-						<MenuItem fx:id="mnuItmUserManagement" mnemonicParsing="false" onAction="#loadUserManagementPanel" text="User Management" />
+            <Menu fx:id="mnuAdmin" mnemonicParsing="false" text="System Administration">
+              <items>
+                <MenuItem fx:id="mnuItmUserManagement" mnemonicParsing="false" onAction="#loadUserManagementPanel" text="User Management" />
 						<MenuItem fx:id="mnuItmDoctorRegistration" mnemonicParsing="false" onAction="#doctorRegistration" text="Doctor Registration" />
-					</items>
-				</Menu>
-				<Menu fx:id="mnuDoctor" mnemonicParsing="false" text="Doctor">
-					<items>
-						<MenuItem fx:id="mnuItmAppointments" mnemonicParsing="false" onAction="#loadAppointmentsPanel" text="Appointments" />
-					</items>
-				</Menu>
+              </items>
+            </Menu>
 				<Menu fx:id="mnuPatient" mnemonicParsing="false" text="Patient">
 					<items>
 						<MenuItem fx:id="mnuItmPatientRegistration" mnemonicParsing="false" onAction="#patientRegistration" text="Patient Registration" />
-						<MenuItem fx:id="mnuItmViewPrescription" mnemonicParsing="false" onAction="#viewPrescription" text="View Prescription" />
-						<MenuItem fx:id="mnuItmChanneling" mnemonicParsing="false" onAction="#loadChannelingPanel" text="Channeling" />
+                  <MenuItem fx:id="mnuItmChanneling" mnemonicParsing="false" onAction="#loadChannelingPanel" text="Channeling" />
 					</items>
 				</Menu>
+				<Menu fx:id="mnuDoctor" mnemonicParsing="false" text="Doctor">
+               <items>
+                  <MenuItem fx:id="mnuItmAppointments" mnemonicParsing="false" onAction="#loadAppointmentsPanel" text="Appointments" />
+               </items>
+				</Menu>
+            <Menu fx:id="mnuPharmacy" mnemonicParsing="false" text="Pharmacy">
+               <items>
+						<MenuItem mnemonicParsing="false" onAction="#viewPrescription" text="View Prescription" />
+               </items>
+            </Menu>
 				<Menu fx:id="mnuLaboratory" mnemonicParsing="false" text="Laboratary ">
 					<items>
 						<MenuItem fx:id="mnuItemLaboratoryTesting" mnemonicParsing="false" onAction="#laboratoryTesting" text="Laboratary Testing" />

@@ -28,6 +28,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -92,7 +94,7 @@ public class ChannelingController implements Controller, Initializable {
 		for (ChannelingDTO dto : channelingDTOWrapper.getList()) {
 			ChannelAppointment appointment = new ChannelAppointment();
 			appointment.setChannelingId(new SimpleStringProperty(String.valueOf(dto.getChannelingId())));
-			appointment.setDate(new SimpleStringProperty(new SimpleDateFormat("yyyy-MM-yy").format(dto.getDate())));
+			appointment.setDate(new SimpleStringProperty(new SimpleDateFormat("yyyy-MM-dd").format(dto.getDate())));
 			appointment.setTime(new SimpleStringProperty(dto.getTime()));
 			appointment.setAppointmentNo(new SimpleStringProperty(String.valueOf(dto.getAppointmentNo())));
 
@@ -107,30 +109,47 @@ public class ChannelingController implements Controller, Initializable {
 	@FXML
 	public void showBookAppointmentDialog() throws IOException {
 
+		if (cmbDoctor.getSelectionModel().getSelectedItem() == null) {
+
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle(alert.getTitle());
+			alert.setHeaderText(null);
+			alert.setContentText(
+					"Please select Doctor Specification, Doctor Name and Date before create a new channeling");
+			alert.showAndWait();
+		}
+		
+		else {
+		
 		Stage childStage = new Stage();
 
 		BookAppointmentController appointmentController = new BookAppointmentController();
 		childStage.setTitle("Book Appointment");
 		childStage.setScene(appointmentController.getScene());
 
-		BookAppointmentController controller = ((BookAppointmentController) appointmentController.getLoader().getController());
-				
+		BookAppointmentController controller = ((BookAppointmentController) appointmentController.getLoader()
+				.getController());
+
 		controller.setDoctorId(cmbDoctor.getSelectionModel().getSelectedItem().doctorId);
-		
+
 		controller.setDoctorName(cmbDoctor.getSelectionModel().getSelectedItem().doctorName);
-		
+
 		controller.setParentController(this);
 
 		LocalDate localDate = datChannelDate.getValue();
 		Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
 		Date appointmentDate = Date.from(instant);
-		
+
 		controller.setDate(appointmentDate);
 
 		childStage.initModality(Modality.APPLICATION_MODAL);
 
 		childStage.initStyle(StageStyle.DECORATED);
+
 		childStage.show();
+
+		}
+
 	}
 
 	private class ChannelAppointment {

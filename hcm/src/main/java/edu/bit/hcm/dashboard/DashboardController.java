@@ -2,6 +2,7 @@ package edu.bit.hcm.dashboard;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.interfaces.RSAKey;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -13,6 +14,7 @@ import edu.bit.hcm.framework.service.Module;
 import edu.bit.hcm.framework.service.ModuleType;
 import edu.bit.hcm.framework.util.LoggedUser;
 import edu.bit.hcm.framework.util.StageMap;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -190,7 +192,7 @@ public class DashboardController implements Initializable, Controller, Dashboard
 	@FXML
 	void logOut(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Exit");
+		alert.setTitle("Logout");
 		alert.setHeaderText("Are you sure you need to logout?");
 		alert.showAndWait().ifPresent(rs -> {
 			if (rs == ButtonType.OK) {
@@ -202,6 +204,23 @@ public class DashboardController implements Initializable, Controller, Dashboard
 			} else if (rs == ButtonType.CANCEL) {
 				alert.close();
 			}
+		});
+	}
+
+	@FXML
+	public void exitMenu(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Exit");
+		alert.setHeaderText(null);
+		alert.setContentText("Are you sure you need to exit?");
+		alert.showAndWait().ifPresent(rs -> {
+			if (rs == ButtonType.OK) {
+				Platform.exit();
+			} else if (rs == ButtonType.CANCEL){
+				alert.close();
+				
+			}
+			
 		});
 	}
 

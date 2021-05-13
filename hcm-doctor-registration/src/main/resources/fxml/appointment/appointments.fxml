@@ -13,14 +13,14 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Button id="btnPatRegNew" onAction="#loadAppointments" fx:id="btnRefrsh" layoutX="845.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Refresh" textFill="WHITE" />
+      <Button id="btnPatRegNew" fx:id="btnRefrsh" layoutX="845.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadAppointments" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Refresh" textFill="WHITE" />
       <AnchorPane style="-fx-border-color: #008b8b;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0">
          <children>
             <TableView id="tblAppoinment" fx:id="tblAppoinment" maxWidth="1.7976931348623157E308" prefHeight="437.0" prefWidth="890.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn id="clmAppoinmentPID" fx:id="clmPID" prefWidth="35.0" text="PID" />
                 <TableColumn id="clmAppoinmentPatientName" fx:id="clmPatientName" prefWidth="104.0" text="Patient Name" />
-                  <TableColumn id="clmAppoinmentAge" fx:id="clmAge" prefWidth="51.0" text="Age" />
+                  <TableColumn id="clmAppoinmentDob" fx:id="clmDob" prefWidth="51.0" text="Date of Birth" />
                   <TableColumn id="clmAppoinmentGender" fx:id="clmGender" prefWidth="60.0" text="Gender" />
                   <TableColumn id="clmAppoinmentReason" fx:id="clmReason" prefWidth="164.0" text="Reason" />
               </columns>

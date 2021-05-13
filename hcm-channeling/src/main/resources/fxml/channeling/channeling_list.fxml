@@ -36,7 +36,7 @@
 		<ComboBox id="cmbChannelDoctor" fx:id="cmbDoctor" layoutX="463.0" layoutY="50.0" prefHeight="25.0" prefWidth="270.0" promptText="Select Doctor" />
 		<DatePicker id="datChannelDate" fx:id="datChannelDate" layoutX="782.0" layoutY="50.0" prefHeight="25.0" prefWidth="163.0" promptText="Select date" />
 		<Label layoutX="747.0" layoutY="54.0" prefHeight="17.0" prefWidth="69.0" text="Date" textFill="DARKCYAN" />
-		<HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="200.0" spacing="10.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+		<HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 			<children>
 				<Button id="btnChannelNew" fx:id="btnChannelNew" mnemonicParsing="false" onAction="#showBookAppointmentDialog" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" />
 				<Button id="btnChannelDelete" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />

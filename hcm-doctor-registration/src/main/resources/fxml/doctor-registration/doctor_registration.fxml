@@ -24,13 +24,14 @@
 								<TableColumn fx:id="clmDoctorName" prefWidth="183.0" text="Doctor Name" />
 								<TableColumn fx:id="clmSpecialization" prefWidth="130.0" text="Specialization" />
 								<TableColumn fx:id="clmMobileNumber" prefWidth="161.0" text="Mobile Number" />
-                        <TableColumn fx:id="clmTelephone" prefWidth="75.0" text="Telephone" />
+                        		<TableColumn fx:id="clmTelephone" prefWidth="75.0" text="Telephone" />
+                        		<TableColumn fx:id="clmRegNo" prefWidth="75.0" text="RegNo" />
 							</columns>
 						</TableView>
-						<Pane prefHeight="52.0" prefWidth="513.0" style="-fx-border-color: #008B8B;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+						<Pane prefHeight="52.0" prefWidth="513.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 							<children>
 								<Button id="btnDocRegNew" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#openDoctorRegistrationDialog" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" />
-								<Button id="btnDocRegDelete" onAction="#deleteSelectedDoctor" layoutX="84.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />
+								<Button id="btnDocRegDelete" layoutX="84.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteSelectedDoctor" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />
 							</children>
 						</Pane>
 					</children>

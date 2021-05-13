@@ -205,11 +205,11 @@ public class DoctorConsultationDialogController implements Controller, Initializ
 	private String titleCodeConverter(int titleCode) {
 		switch (titleCode) {
 		case 1:
-			return "Mr.";
+			return "Mr";
 		case 2:
-			return "Mrs.";
+			return "Mrs";
 		case 3:
-			return "Rev.";
+			return "Ms";
 		case 4:
 			return "Miss";
 

@@ -20,9 +20,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -39,7 +44,7 @@ public class PatientRegistrationController implements Controller, Initializable 
 	private TableView<Patient> tblPatients;
 
 	@FXML
-	private TableColumn<Patient, String> clmPatientId, clmPatientName, clmNicNumber;
+	private TableColumn<Patient, String> clmPatientId, clmPatientName, clmNicNumber, clmMobile;
 
 	final ObservableList<Patient> tableData = FXCollections.observableArrayList();
 
@@ -74,6 +79,7 @@ public class PatientRegistrationController implements Controller, Initializable 
 		clmPatientId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().patientId));
 		clmPatientName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPatientName()));
 		clmNicNumber.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nicNumber));
+		clmMobile.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().mobile));
 		
 		loadPatientsTable();
 	}
@@ -115,6 +121,7 @@ public class PatientRegistrationController implements Controller, Initializable 
 			 patient.setPatientId(String.valueOf(patientDTO.getPid()));
 			 patient.setPatientName(patientDTO.getFirstName() + " " + patientDTO.getLastName());
 			 patient.setNicNumber(patientDTO.getNic());
+			patient.setMobile(patientDTO.getMobile());
 			 patient.setPatientDTO(patientDTO);
 			 tableData.add(patient);
 		 }
@@ -133,13 +140,54 @@ public class PatientRegistrationController implements Controller, Initializable 
 	}
 	
 	@FXML
+	public void deleteSelectedPatient() {
+
+		if (tblPatients.getSelectionModel().getSelectedItem() == null) {
+			return;
+		}
+
+		Alert alert = new Alert(AlertType.WARNING, "Are you sure you need to delete selected patinet?",
+				new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE),
+				new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE));
+		alert.setTitle("Delete Patinet");
+		// alert.setHeaderText("Are you sure you need to delete selected doctor?");
+		alert.showAndWait().ifPresent(rs -> {
+			if (rs.getButtonData() == ButtonData.OK_DONE) {
+
+				PatientDetailsRegistrationAPIConnector apiConnector = new PatientDetailsRegistrationAPIConnector();
+
+				try {
+					apiConnector.deletePatinet(tblPatients.getSelectionModel().getSelectedItem().getPatientDTO());
+					loadPatientsTable();
+					
+				} catch (JsonGenerationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JsonMappingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				alert.close();
+
+			} else if (rs.getButtonData() == ButtonData.CANCEL_CLOSE) {
+				alert.close();
+			}
+
+		});
+	}
+	
+	@FXML
 	public void closeDialog(Event event) {
 		Stage stage = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
 		stage.close();
 	}
 
 	private class Patient {
-		private String patientId, patientName, nicNumber;
+		private String patientId, patientName, nicNumber, mobile;
 		private PatientDTO patientDTO;
 
 		public Patient() {
@@ -177,6 +225,16 @@ public class PatientRegistrationController implements Controller, Initializable 
 		public void setPatientDTO(PatientDTO patientDTO) {
 			this.patientDTO = patientDTO;
 		}
+
+		public String getMobile() {
+			return mobile;
+		}
+
+		public void setMobile(String mobile) {
+			this.mobile = mobile;
+		}
+		
+		
 
 	}
 

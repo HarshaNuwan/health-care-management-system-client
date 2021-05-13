@@ -44,7 +44,7 @@ public class DoctorRegistrationController implements Controller, Initializable {
 
 	@FXML
 	private TableColumn<DoctorTableRecord, String> clmDoctorId, clmDoctorName, clmSpecialization, clmMobileNumber,
-			clmTelephone;
+			clmTelephone, clmRegNo;
 
 	@FXML
 	private TextField txtDocRegSearch;
@@ -69,7 +69,8 @@ public class DoctorRegistrationController implements Controller, Initializable {
 		childStage.setScene(dialogController.getScene());
 
 		((DoctorRegistrationDialogController) dialogController.getLoader().getController()).setParentController(this);
-		//((DoctorRegistrationDialogController) dialogController.getLoader().getController()).fillSpecializationCombobox();
+		// ((DoctorRegistrationDialogController)
+		// dialogController.getLoader().getController()).fillSpecializationCombobox();
 
 		childStage.initModality(Modality.APPLICATION_MODAL);
 
@@ -148,7 +149,7 @@ public class DoctorRegistrationController implements Controller, Initializable {
 	private void loadDoctorsIntoTable() {
 		tableData.clear();
 
-		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector();
+		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector() ;
 
 		try {
 
@@ -165,6 +166,7 @@ public class DoctorRegistrationController implements Controller, Initializable {
 						new SimpleStringProperty(doctorDTO.getSpecializationDTO().getSpecializationName()));
 				tableRecord.setMobileNumber(new SimpleStringProperty(doctorDTO.getMobile()));
 				tableRecord.setTelephone(new SimpleStringProperty(doctorDTO.getTelephone()));
+				tableRecord.setReg_no(new SimpleStringProperty(doctorDTO.getRegNo()));
 
 				tableData.add(tableRecord);
 			}
@@ -181,7 +183,7 @@ public class DoctorRegistrationController implements Controller, Initializable {
 		}
 
 		tblDoctorTable.setItems(tableData);
-		
+
 		FilteredList<DoctorTableRecord> filteredData = new FilteredList<>(tableData, p -> true);
 
 		txtDocRegSearch.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -206,11 +208,11 @@ public class DoctorRegistrationController implements Controller, Initializable {
 		sortedData.comparatorProperty().bind(tblDoctorTable.comparatorProperty());
 
 		tblDoctorTable.setItems(sortedData);
-		
+
 	}
 
 	private class DoctorTableRecord {
-		private StringProperty doctorId, doctorName, specialization, mobileNumber, telephone;
+		private StringProperty doctorId, doctorName, specialization, mobileNumber, telephone, reg_no;
 		private DoctorDTO doctorDTO;
 
 		@SuppressWarnings("unused")
@@ -220,14 +222,16 @@ public class DoctorRegistrationController implements Controller, Initializable {
 
 		@SuppressWarnings("unused")
 		public DoctorTableRecord(StringProperty doctorId, StringProperty doctorName, StringProperty specialization,
-				StringProperty mobileNumber, StringProperty telephone, DoctorDTO doctorDTO) {
+				StringProperty mobileNumber, StringProperty telephone, StringProperty reg_no , DoctorDTO doctorDTO) {
 			super();
 			this.doctorId = doctorId;
 			this.doctorName = doctorName;
 			this.specialization = specialization;
 			this.mobileNumber = mobileNumber;
 			this.telephone = telephone;
+			this.reg_no = reg_no;
 			this.doctorDTO = doctorDTO;
+			
 		}
 
 		public StringProperty getDoctorId() {
@@ -278,6 +282,14 @@ public class DoctorRegistrationController implements Controller, Initializable {
 			this.doctorDTO = doctorDTO;
 		}
 
+		public StringProperty getReg_no() {
+			return reg_no;
+		}
+
+		public void setReg_no(StringProperty reg_no) {
+			this.reg_no = reg_no;
+		}
+
 	}
 
 	@Override
@@ -288,7 +300,9 @@ public class DoctorRegistrationController implements Controller, Initializable {
 		clmSpecialization.setCellValueFactory(cellData -> cellData.getValue().specialization);
 		clmMobileNumber.setCellValueFactory(cellData -> cellData.getValue().mobileNumber);
 		clmTelephone.setCellValueFactory(cellData -> cellData.getValue().telephone);
+		clmRegNo.setCellValueFactory(cellData -> cellData.getValue().reg_no);
 
 	}
+	
 
 }

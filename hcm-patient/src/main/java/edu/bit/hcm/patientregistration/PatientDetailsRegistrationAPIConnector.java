@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import edu.bit.hcm.PatientDTO;
 import edu.bit.hcm.framework.util.LoggedUser;
 import edu.bit.hcm.framework.util.RESTConnector;
+import edu.bit.hcm.patientregistration.request.DeletePatientRequest;
 import edu.bit.hcm.patientregistration.request.PatientDetailsSaveRequest;
 import edu.bit.hcm.patientregistration.request.RetriveAllPatientsRequest;
 import edu.bit.hcm.wrapper.PatientDTOListWrapper;
@@ -34,6 +35,18 @@ public class PatientDetailsRegistrationAPIConnector {
 
 		ResponseEntity<PatientDTOListWrapper> resp = (ResponseEntity<PatientDTOListWrapper>) RESTConnector
 				.getResponse(LoggedUser.getInstance().getJwtToken(), retriveAllPatientsRequest);
+
+		return resp.getBody();
+	}
+
+	public String deletePatinet(PatientDTO patinetDTO)
+			throws JsonGenerationException, JsonMappingException, IOException {
+		DeletePatientRequest deletePatinetRequest = new DeletePatientRequest();
+		deletePatinetRequest.setDTO(patinetDTO);
+
+		@SuppressWarnings("unchecked")
+		ResponseEntity<String> resp = (ResponseEntity<String>) RESTConnector
+				.getResponse(LoggedUser.getInstance().getJwtToken(), deletePatinetRequest);
 
 		return resp.getBody();
 	}

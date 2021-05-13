@@ -12,14 +12,6 @@ import edu.bit.hcm.patientregistration.PatientRegistrationModel;
 import edu.bit.hcm.user.registration.UserManagementModule;
 import edu.bit.hcm.viewprescription.ViewPrescriptionModule;
 
-/**
- * 
- *  
- *         !Important Note This factory should be modified to load modules from
- *         a configuration file and load modules dynamically rather than hard
- *         coded module names form the ModuleType enum
- *
- */
 
 public class ModuleFactory {
 

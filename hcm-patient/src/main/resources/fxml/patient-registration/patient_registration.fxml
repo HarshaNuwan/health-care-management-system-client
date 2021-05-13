@@ -29,32 +29,15 @@
 								<TableColumn id="clmPatRegPatientID" fx:id="clmPatientId" prefWidth="89.0" text="Patient ID" />
 								<TableColumn id="clmPatRegPatientName" fx:id="clmPatientName" prefWidth="294.0" text="Patient Name" />
 								<TableColumn id="clmPatRegNIC" fx:id="clmNicNumber" prefWidth="129.0" text="NIC Number" />
+                        		<TableColumn fx:id="clmMobile" prefWidth="97.0" text="Mobile Number" />
 							</columns>
 						</TableView>
-						<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-							<children>
-								<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="207.0" AnchorPane.rightAnchor="5.0">
-									<children>
-										<Button id="btnPatRegNew" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showPatientRegistrationDialog" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" HBox.hgrow="ALWAYS">
-											<padding>
-												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-											</padding>
-											<HBox.margin>
-												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-											</HBox.margin>
-										</Button>
-										<Button id="btnPatRegDelete" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" HBox.hgrow="ALWAYS">
-											<padding>
-												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-											</padding>
-											<HBox.margin>
-												<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-											</HBox.margin>
-										</Button>
-									</children>
-								</HBox>
-							</children>
-						</AnchorPane>
+            						<AnchorPane prefHeight="48.0" prefWidth="629.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0">
+            							<children>
+            										<Button id="btnPatRegNew" layoutX="14.0" layoutY="14.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showPatientRegistrationDialog" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="New" textFill="WHITE" />
+            										<Button id="btnPatRegDelete" layoutX="84.0" layoutY="14.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteSelectedPatient" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE" />
+            							</children>
+            						</AnchorPane>
 					</children>
 				</AnchorPane>
 			</children>

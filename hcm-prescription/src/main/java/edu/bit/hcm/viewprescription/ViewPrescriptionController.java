@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+
+import edu.bit.hcm.DiagnosisDTO;
 import edu.bit.hcm.framework.service.Controller;
+import edu.bit.hcm.wrapper.DiagnosisDTOListWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -39,6 +44,8 @@ public class ViewPrescriptionController implements Controller, Initializable {
 
 	@FXML
 	private TableColumn<PendingPrescription, String> cmlStatus;
+
+	private String fDate;
 
 	@Override
 	public Scene getScene() throws IOException {
@@ -106,6 +113,10 @@ public class ViewPrescriptionController implements Controller, Initializable {
 
 	private class PendingPrescription {
 		private StringProperty clmPID, clmPatientName, clmPrescriptionID, cmlStatus;
+		
+		public PendingPrescription() {
+			// TODO Auto-generated constructor stub
+		}
 
 		public PendingPrescription(String clmPID, String clmPatientName, String clmPrescriptionID, String cmlStatus) {
 			super();
@@ -146,6 +157,44 @@ public class ViewPrescriptionController implements Controller, Initializable {
 		public StringProperty getCmlStatus() {
 			return cmlStatus;
 		}
+	}
+
+	private void loadPrescriptionDataforPharmacy() {
+		ViewPrescriptionConnector apiConnector = new ViewPrescriptionConnector();
+		tableData.clear();
+
+		try {
+
+			DiagnosisDTOListWrapper dtoListWrapper = apiConnector.getPrescriptionDetaislByDate(this.fDate);
+			for (DiagnosisDTO diagnosisDTO : dtoListWrapper.getList()) {
+				
+				
+
+				PendingPrescription prescription = new PendingPrescription();
+				
+				
+
+				prescription.setClmPID(String.valueOf(diagnosisDTO.getPid()));
+				prescription.setClmPatientName(diagnosisDTO.getReports());
+				prescription.setClmPrescriptionID(String.valueOf(diagnosisDTO.getDiagnosisId()));
+				prescription.setCmlStatus(String.valueOf(diagnosisDTO.isPrescriptionStatus()));
+
+				
+				tableData.add(prescription);
+			}
+
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		tblPendingPrescription.setItems(tableData);
 	}
 
 }

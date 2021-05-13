@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 public class BookAppointmentController implements Controller, Initializable {
 
 	private FXMLLoader loader;
-	
+
 	private ChannelingController parentController;
 
 	private int doctorId;
@@ -118,8 +118,9 @@ public class BookAppointmentController implements Controller, Initializable {
 			String response = channelingConnector.saveChannleBooking(channelingDTO);
 
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(response);
-			alert.setHeaderText(response);
+			alert.setTitle(alert.getTitle());
+			alert.setHeaderText(null);
+			alert.setContentText(response.substring(12, 49));
 			alert.showAndWait().ifPresent(rs -> {
 				if (rs == ButtonType.OK) {
 					clearForm();
@@ -129,7 +130,7 @@ public class BookAppointmentController implements Controller, Initializable {
 				}
 
 			});
-			
+
 			parentController.refreshChannelingList();
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
@@ -145,19 +146,19 @@ public class BookAppointmentController implements Controller, Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void clearForm() {
 		txtReason.clear();
 		txtTime.clear();
 		cmbAmPm.getSelectionModel().select(0);
 		txtPatientId.clear();
-		
+
 	}
 
 	public FXMLLoader getLoader() {
 		return loader;
 	}
-	
+
 	public void setParentController(ChannelingController parentController) {
 		this.parentController = parentController;
 	}

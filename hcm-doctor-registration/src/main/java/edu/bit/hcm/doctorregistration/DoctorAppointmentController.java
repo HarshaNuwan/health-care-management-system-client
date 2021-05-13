@@ -2,6 +2,9 @@ package edu.bit.hcm.doctorregistration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,7 +47,7 @@ public class DoctorAppointmentController implements Controller, Initializable {
 	private TableColumn<Appointment, String> clmPatientName;
 
 	@FXML
-	private TableColumn<Appointment, String> clmAge;
+	private TableColumn<Appointment, String> clmDob;
 
 	@FXML
 	private TableColumn<Appointment, String> clmGender;
@@ -66,17 +69,21 @@ public class DoctorAppointmentController implements Controller, Initializable {
 	}
 
 	private class Appointment {
-		private StringProperty clmPID, clmPatientName, clmAge, clmGender, clmReason;
+		private StringProperty clmPID, clmPatientName, clmDob, clmGender, clmReason;
 		private PatientDTO patientDTO;
 		private int doctorId;
 		private Date appointmentDate;
 
+		public Appointment() {
+			// TODO Auto-generated constructor stub
+		}
+
 		@SuppressWarnings("unused")
-		public Appointment(String clmPID, String clmPatientName, String clmAge, String clmGender, String clmReason) {
+		public Appointment(String clmPID, String clmPatientName, String clmDob, String clmGender, String clmReason) {
 			super();
 			this.clmPID = new SimpleStringProperty(clmPID);
 			this.clmPatientName = new SimpleStringProperty(clmPatientName);
-			this.clmAge = new SimpleStringProperty(clmAge);
+			this.clmDob = new SimpleStringProperty(clmDob);
 			this.clmGender = new SimpleStringProperty(clmGender);
 			this.clmReason = new SimpleStringProperty(clmReason);
 		}
@@ -97,12 +104,12 @@ public class DoctorAppointmentController implements Controller, Initializable {
 			this.clmPatientName.set(clmPatientID);
 		}
 
-		public StringProperty getClmAge() {
-			return clmAge;
+		public StringProperty getClmDob() {
+			return clmDob;
 		}
 
-		public void setClmAge(String clmAge) {
-			this.clmAge.set(clmAge);
+		public void setClmDob(String clmDob) {
+			this.clmDob.set(clmDob);
 		}
 
 		public StringProperty getClmGender() {
@@ -128,19 +135,19 @@ public class DoctorAppointmentController implements Controller, Initializable {
 		public PatientDTO getPatientDTO() {
 			return patientDTO;
 		}
-		
+
 		public int getDoctorId() {
 			return doctorId;
 		}
-		
+
 		public void setDoctorId(int doctorId) {
 			this.doctorId = doctorId;
 		}
-		
+
 		public Date getAppointmentDate() {
 			return appointmentDate;
 		}
-		
+
 		public void setAppointmentDate(Date appointmentDate) {
 			this.appointmentDate = appointmentDate;
 		}
@@ -157,7 +164,7 @@ public class DoctorAppointmentController implements Controller, Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		clmPID.setCellValueFactory(cellData -> cellData.getValue().getClmPID());
 		clmPatientName.setCellValueFactory(cellData -> cellData.getValue().getClmPatientName());
-		clmAge.setCellValueFactory(cellData -> cellData.getValue().getClmAge());
+		clmDob.setCellValueFactory(cellData -> cellData.getValue().getClmDob());
 		clmGender.setCellValueFactory(cellData -> cellData.getValue().getClmGender());
 		clmReason.setCellValueFactory(cellData -> cellData.getValue().getClmReason());
 
@@ -184,13 +191,13 @@ public class DoctorAppointmentController implements Controller, Initializable {
 				childStage.setResizable(false);
 
 				((DoctorConsultationDialogController) dialogController.getLoader().getController())
-				.setDoctorId(patient.getDoctorId());
-				
+						.setDoctorId(patient.getDoctorId());
+
 				((DoctorConsultationDialogController) dialogController.getLoader().getController())
 						.loadConsultationDialogData(patient.getPatientDTO());
-				
+
 				((DoctorConsultationDialogController) dialogController.getLoader().getController())
-				.setDiagnosisDate(patient.getAppointmentDate());
+						.setDiagnosisDate(patient.getAppointmentDate());
 
 				childStage.initModality(Modality.APPLICATION_MODAL);
 
@@ -206,16 +213,19 @@ public class DoctorAppointmentController implements Controller, Initializable {
 		tableData.clear();
 		DoctorDetailsRegistrationAPIConnector apiConnector = new DoctorDetailsRegistrationAPIConnector();
 		try {
-			List<ChannelingDTO> channelingDTOs = apiConnector.getChannelingDetailsByDateAndDoctorId(new Date(), LoggedUser.getInstance().getDoctorId())
+			List<ChannelingDTO> channelingDTOs = apiConnector
+					.getChannelingDetailsByDateAndDoctorId(new Date(), LoggedUser.getInstance().getDoctorId())
 					.getList();
 			for (ChannelingDTO channelingDTO : channelingDTOs) {
 				PatientDTO patientDTO = channelingDTO.getPatientDTO();
 				Appointment appointment = null;
 
 				if (patientDTO != null) {
-					appointment = new Appointment(String.valueOf(channelingDTO.getPid()),
-							patientDTO.getFirstName() + " " + patientDTO.getLastName(), "-",
+					appointment = new Appointment(String.valueOf(patientDTO.getPid()),
+							patientDTO.getFirstName() + " " + patientDTO.getLastName(),
+							new SimpleDateFormat("yyyy-MM-dd").format(patientDTO.getDob()),
 							patientDTO.getGenderCode() == 1 ? "Male" : "Female", channelingDTO.getReason());
+
 				} else {
 					appointment = new Appointment(String.valueOf(channelingDTO.getPid()), "-", "-", "-",
 							channelingDTO.getReason());
